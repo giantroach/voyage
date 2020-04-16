@@ -1,0 +1,26 @@
+.task-item {
+  display: flex;
+
+  > div:hover {
+    background-color: rgba(0, 0, 0, 0.10);
+    cursor: pointer;
+  }
+
+  .current-task {
+    flex: 1 1 auto;
+    padding: 10px 10px;
+  }
+
+  .cancel {
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 24px;
+    justify-content: center;
+    padding: 0 10px;
+
+    > * {
+      flex: 0 0 24px;
+    }
+  }
+}

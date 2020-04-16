@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 const task = {
   title: 'Build',
@@ -12,6 +12,9 @@ const task = {
   styleUrls: ['./active-task.component.scss']
 })
 export class ActiveTaskComponent implements OnInit {
+
+  @Input() linkto: string = '';
+
 
   public task: any = task;
 

@@ -14,6 +14,7 @@ import { LogComponent } from './shared/components/log/log.component';
 import { StatusComponent } from './shared/components/status/status.component';
 import { TaskComponent } from './shared/components/task/task.component';
 import { ActiveTaskComponent } from './shared/components/active-task/active-task.component';
+import { TasksComponent } from './pages/tasks/tasks.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ActiveTaskComponent } from './shared/components/active-task/active-task
     StatusComponent,
     TaskComponent,
     ActiveTaskComponent,
+    TasksComponent,
   ],
   imports: [
     BrowserModule,

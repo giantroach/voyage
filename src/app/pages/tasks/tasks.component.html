@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Tasks</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<vy-active-task></vy-active-task>
+
+<ng-container *ngFor="let t of tasks">
+  <vy-task></vy-task>
+</ng-container>
