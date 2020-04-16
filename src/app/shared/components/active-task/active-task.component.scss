@@ -1,0 +1,44 @@
+.task-item {
+  display: flex;
+
+  > div:hover {
+    background-color: rgba(0, 0, 0, 0.10);
+    cursor: pointer;
+  }
+
+  .current-task {
+    flex: 1 1 auto;
+    padding: 10px 10px;
+
+    .progress {
+      display: flex;
+
+      .progress-bar {
+        flex: 1 1 auto;
+
+        .progress-parent {
+          border-radius: 5px;
+          background-color: gray;
+          height: 10px;
+
+          .progress-current {
+          }
+        }
+      }
+    }
+  }
+
+  .halt {
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 24px;
+    justify-content: center;
+    padding: 0 10px;
+
+    > * {
+      color: red;
+      flex: 0 0 24px;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+:host {
+  background-color: darkslategray;
+  color: lightgray;
+  justify-content: center;
+  display: flex;
+}
+
+.status {
+  display: flex;
+  width: 400px;
+
+  .you {
+    flex: 1 1 auto;
+  }
+
+  .progress {
+    flex: 1 1 auto;
+    text-align: right;
+  }
+}
+
+.visual {
+
+}
