@@ -6,29 +6,45 @@
     cursor: pointer;
   }
 
-  .current-task {
+  .task {
+    display: flex;;
     flex: 1 1 auto;
     padding: 10px 10px;
 
-    .progress {
+    > .task-icon:first-child {
+      margin: -10px 0;
+      padding: 0 10px 0 0;
+    }
+
+    > .title-progress {
       display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
 
-      .progress-bar {
-        flex: 1 1 auto;
+      > .progress {
+        display: flex;
 
-        .progress-parent {
-          border-radius: 5px;
-          background-color: gray;
-          height: 10px;
+        .progress-bar {
+          flex: 1 1 auto;
 
-          .progress-current {
+          .progress-parent {
+            border-radius: 5px;
+            background-color: gray;
+            height: 10px;
+
+            .progress-current {
+              height: 10px;
+              border-radius: 5px;
+              background-color: green;
+            }
           }
         }
       }
     }
   }
 
-  .halt {
+
+  .cancel, .task-icon {
     align-content: center;
     display: flex;
     flex-direction: column;
@@ -37,8 +53,11 @@
     padding: 0 10px;
 
     > * {
-      color: red;
       flex: 0 0 24px;
     }
+  }
+
+  .cancel > * {
+    color: red;
   }
 }

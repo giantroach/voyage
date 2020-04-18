@@ -9,10 +9,10 @@ import { TaskDef } from 'app/types/tasks';
 // FIXME: locate this better place
 const tasks = [
   { id: 'B0', name: 'Build', icon: 'build', subTasks: [
-    { id: 'B1', name: 'Firm', icon: 'local_pizza' },
-    { id: 'B1', name: 'Mast', icon: 'directions_boat' }
+    { id: 'B1', name: 'Firm', icon: 'local_pizza', cost: 100 },
+    { id: 'B1', name: 'Mast', icon: 'directions_boat', cost: 100 }
   ] },
-  { id: 'F0', name: 'Fishing', icon: 'restaurant' }
+  { id: 'F0', name: 'Fishing', icon: 'restaurant', cost: 100 }
 ];
 
 @Component({

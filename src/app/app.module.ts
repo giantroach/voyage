@@ -16,7 +16,6 @@ import { LogComponent } from './shared/components/log/log.component';
 import { StatusComponent } from './shared/components/status/status.component';
 import { TaskComponent } from './shared/components/task/task.component';
 import { ActiveTaskComponent } from './shared/components/active-task/active-task.component';
-import { TasksComponent } from './pages/tasks/tasks.component';
 import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 import { TaskListComponent } from './pages/task-list/task-list.component';
 
@@ -28,7 +27,6 @@ import { TaskListComponent } from './pages/task-list/task-list.component';
     StatusComponent,
     TaskComponent,
     ActiveTaskComponent,
-    TasksComponent,
     EditTaskComponent,
     TaskListComponent,
   ],
