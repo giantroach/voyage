@@ -6,12 +6,18 @@
     cursor: pointer;
   }
 
-  .current-task {
+  .task {
+    display: flex;;
     flex: 1 1 auto;
     padding: 10px 10px;
+
+    > .task-icon:first-child {
+      margin: -10px 0;
+      padding: 0 10px 0 0;
+    }
   }
 
-  .cancel {
+  .cancel, .task-icon {
     align-content: center;
     display: flex;
     flex-direction: column;

@@ -1,13 +1,51 @@
-<div class="mat-elevation-z2">
+<div class="mat-elevation-z2" *ngIf="taskDef">
 
-  <div class="task-item">
-    <div class="current-task" [routerLink]="linkto">
-      <div class="title">{{task.title}}</div>
-    </div>
+  <div class="task-item" *ngIf="!newTask">
+    <ng-container *ngIf="linkTo">
+      <div class="task" [routerLink]="linkTo">
+        <div class="task-icon">
+          <mat-icon aria-hidden="false">{{taskDef.icon}}</mat-icon>
+        </div>
 
-    <div class="cancel">
-      <mat-icon aria-hidden="false" aria-label="Stop current taks">delete</mat-icon>
+        <div class="title">{{taskDef.name}}</div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="!linkTo">
+      <div class="task">
+        <div class="task-icon">
+          <mat-icon aria-hidden="false">{{taskDef.icon}}</mat-icon>
+        </div>
+
+        <div class="title">{{taskDef.name}}</div>
+      </div>
+    </ng-container>
+
+    <div class="cancel" (click)="deleteTask()">
+      <mat-icon aria-hidden="false" aria-label="Stop current task">delete</mat-icon>
     </div>
+  </div>
+
+  <div class="task-item" *ngIf="newTask">
+    <ng-container *ngIf="linkTo">
+      <div class="task" [routerLink]="linkTo">
+        <div class="task-icon">
+          <mat-icon aria-hidden="false">{{taskDef.icon}}</mat-icon>
+        </div>
+
+        <div class="title">{{taskDef.name}}</div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="!linkTo">
+      <div class="task">
+        <div class="task-icon">
+          <mat-icon aria-hidden="false">{{taskDef.icon}}</mat-icon>
+        </div>
+
+        <div class="title">{{taskDef.name}}</div>
+      </div>
+    </ng-container>
   </div>
 
 </div>

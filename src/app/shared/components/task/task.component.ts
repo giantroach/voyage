@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-const task = {
-  title: 'Build',
-  progressMax: 100,
-  progressNow: 50
-}
+import { TasksService } from 'app/shared/services/tasks.service'
+
+import { TaskDef } from 'app/types/tasks';
 
 @Component({
   selector: 'vy-task',
@@ -13,13 +13,26 @@ const task = {
 })
 export class TaskComponent implements OnInit {
 
-  @Input() linkto: string = '';
+  @Input() linkTo: string = '';
+  @Input() newTask: boolean = false;
+  @Input() taskDef: TaskDef = null;
 
 
-  public task: any = task;
+  public deleteTask() {
+    this.tasksService.del(this.taskDef.uid);
+    this.snackBar.open(`Task ${this.taskDef.name} is deleted` , 'OK', {
+      duration: 3000
+    });
+    this.router.navigate(['/tasks']);
+  }
 
 
-  constructor() { }
+  constructor(
+    protected route: ActivatedRoute,
+    protected router: Router,
+    protected tasksService: TasksService,
+    protected snackBar: MatSnackBar
+  ) { }
 
 
   ngOnInit(): void {

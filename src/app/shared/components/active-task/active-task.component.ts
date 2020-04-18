@@ -13,7 +13,7 @@ const task = {
 })
 export class ActiveTaskComponent implements OnInit {
 
-  @Input() linkto: string = '';
+  @Input() linkTo: string = '';
 
 
   public task: any = task;
