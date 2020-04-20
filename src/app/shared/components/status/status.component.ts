@@ -31,9 +31,9 @@ export class StatusComponent implements OnInit {
 
     // you
     this.level = dispStatus.you.level;
-    this.healthPer = dispStatus.you.healthPer;
-    this.foodPer = dispStatus.you.foodPer;
-    this.waterPer = dispStatus.you.waterPer;
+    this.healthPer = dispStatus.you.healthPer * 100;
+    this.foodPer = dispStatus.you.foodPer * 100;
+    this.waterPer = dispStatus.you.waterPer * 100;
 
     // progress
     this.day = dispStatus.progress.days;

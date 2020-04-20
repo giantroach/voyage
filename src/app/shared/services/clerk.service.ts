@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { StatusService } from './status.service';
 import { StorageService } from './storage.service';
 import { TasksService } from './tasks.service';
 import { TickService } from './tick.service';
@@ -23,6 +24,7 @@ export class ClerkService {
 
   public init(): void {
     this.storage.init();
+    this.status.init();
     this.tasks.init();
 
     this.tick.init();
@@ -33,6 +35,7 @@ export class ClerkService {
 
 
   constructor(
+    protected status: StatusService,
     protected storage: StorageService,
     protected tasks: TasksService,
     protected tick: TickService

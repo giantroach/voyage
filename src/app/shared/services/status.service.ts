@@ -37,7 +37,7 @@ export class StatusService {
   public getDispStatus(): DispStatus {
     return {
       progress: {
-        days: moment().diff(moment(this.status.progress.since), 'days'),
+        days: this.getDays(),
         distance: this.status.progress.distance,
       },
       you: {
@@ -64,6 +64,13 @@ export class StatusService {
         * Math.log((Number(new Date()) - this.status.progress.since) / 1000)
     ) + 1;
     return lv < 100 ? lv : 100;
+  }
+
+
+  private getDays(): number {
+    const since = this.status.progress.since;
+    if (!since) { return 0; }
+    return moment().diff(moment(since), 'days');
   }
 
 

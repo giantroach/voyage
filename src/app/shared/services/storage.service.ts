@@ -17,7 +17,9 @@ export class StorageService {
 
 
   public get<T>(key: string): T {
-    return JSON.parse(this.storage[key] || '{}');
+    const data = this.storage[key];
+    if (!data) { return null; }
+    return JSON.parse(data);
   }
 
 
