@@ -45,7 +45,7 @@ export class StatusComponent implements OnInit {
 
 
   public get(key: string) {
-    switch(key) {
+    switch (key) {
       case 'level':
         return this.level;
 

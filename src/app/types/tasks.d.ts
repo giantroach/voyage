@@ -9,6 +9,7 @@ interface Task {
   name: string;
   icon?: string;
   cost?: number;
+  effort?: number;
 }
 
 interface ActiveTask extends Task {

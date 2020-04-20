@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClerkService } from 'app/shared/services/clerk.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'vy-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

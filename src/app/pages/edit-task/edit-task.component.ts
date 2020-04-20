@@ -2,21 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { TasksService } from 'app/shared/services/tasks.service'
+import { TasksService } from 'app/shared/services/tasks.service';
 
 import { TaskDef } from 'app/types/tasks';
 
 // FIXME: locate this better place
 const tasks = [
   { id: 'B0', name: 'Build', icon: 'build', subTasks: [
-    { id: 'B1', name: 'Firm', icon: 'local_pizza', cost: 100 },
-    { id: 'B1', name: 'Mast', icon: 'directions_boat', cost: 100 }
+    { id: 'B1', name: 'Firm', icon: 'local_pizza', cost: 100, effort: 100 },
+    { id: 'B1', name: 'Mast', icon: 'directions_boat', cost: 100, effort: 100 }
   ] },
-  { id: 'F0', name: 'Fishing', icon: 'restaurant', cost: 100 }
+  { id: 'F0', name: 'Fishing', icon: 'restaurant', cost: 100, effort: 100 }
 ];
 
 @Component({
-  selector: 'app-edit-task',
+  selector: 'vy-edit-task',
   templateUrl: './edit-task.component.html',
   styleUrls: ['./edit-task.component.scss']
 })

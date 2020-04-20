@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { TasksService } from 'app/shared/services/tasks.service'
+import { TasksService } from 'app/shared/services/tasks.service';
 
 import { TaskDef } from 'app/types/tasks';
 
@@ -13,8 +13,8 @@ import { TaskDef } from 'app/types/tasks';
 })
 export class TaskComponent implements OnInit {
 
-  @Input() linkTo: string = '';
-  @Input() newTask: boolean = false;
+  @Input() linkTo = '';
+  @Input() newTask = false;
   @Input() taskDef: TaskDef = null;
 
 

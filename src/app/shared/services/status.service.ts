@@ -58,6 +58,11 @@ export class StatusService {
   }
 
 
+  public getEfficiency(): number {
+    return Math.log(this.level) + 1;
+  }
+
+
   private getLevel(): number {
     const lv = Math.floor(
       this.status.progress.distance / 20

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { StatusService } from './status.service';
 import { StorageService } from './storage.service';
 import { TasksService } from './tasks.service';
@@ -10,10 +10,14 @@ import { TickService } from './tick.service';
 })
 export class ClerkService {
 
-  public handle(): void {
-    console.log('handling')
+  @Output() notification = new EventEmitter<void>();
 
+
+  public handle(): void {
+    console.log('handling');
+    this.tasks.tack();
     this.save();
+    this.notification.emit();
   }
 
 

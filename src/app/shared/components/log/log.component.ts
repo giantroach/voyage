@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 const log = [
   { title: 'test', details: '', time: 1586622914770 }
-]
+];
 
 
 @Component({

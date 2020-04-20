@@ -1,6 +1,6 @@
 <div class="mat-elevation-z4">
 
-  <div class="task-item">
+  <div class="task-item" *ngIf="task">
     <div class="task" [routerLink]="linkTo">
       <div class="task-icon">
         <mat-icon aria-hidden="false">{{task.icon}}</mat-icon>
@@ -26,6 +26,19 @@
 
     <div class="cancel" click="deleteTask()">
       <mat-icon aria-hidden="false" aria-label="Stop current taks">block</mat-icon>
+    </div>
+  </div>
+
+
+  <div class="task-item" *ngIf="!task">
+    <div class="task" routerLink="/tasks/new">
+      <div class="task-icon">
+        <mat-icon aria-hidden="false">add</mat-icon>
+      </div>
+
+      <div class="title-progress">
+        <div class="title">Add new Task</div>
+      </div>
     </div>
   </div>
 

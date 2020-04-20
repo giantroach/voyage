@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { StatusService } from './status.service';
 import { StorageService } from './storage.service';
 import {
   StoredTasks,
@@ -33,7 +34,8 @@ export class TasksService {
         uid: this.genUID(),
         name: t.name,
         icon: t.icon || '',
-        cost: t.cost || 0
+        cost: t.cost || 0,
+        effort: t.effort || 0
       });
       this.save();
       return;
@@ -45,6 +47,7 @@ export class TasksService {
       name: t.name,
       icon: t.icon || '',
       cost: t.cost || 0,
+      effort: t.effort || 0,
       since: Number(new Date()),
       completed: 0
     };
@@ -58,6 +61,8 @@ export class TasksService {
         this.activeTask = null;
         return;
       }
+
+      if (!this.queuedTasks.length) { return; }
 
       this.activeTask = Object.assign(
         { since: Number(new Date()), completed: 0 },
@@ -73,8 +78,21 @@ export class TasksService {
   }
 
 
+  public shift() {
+    if (!this.queuedTasks.length) {
+      this.activeTask = null;
+      return;
+    }
+
+    this.activeTask = Object.assign(
+      { since: Number(new Date()), completed: 0 },
+      this.queuedTasks.shift()
+    );
+  }
+
+
   public genUID(): string {
-    let chars = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.split('');
+    const chars = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.split('');
     for (let i = 0, len = chars.length; i < len; i++) {
       switch (chars[i]) {
         case 'x':
@@ -86,6 +104,27 @@ export class TasksService {
       }
     }
     return chars.join('');
+  }
+
+
+  public tack(): void {
+    if (!this.activeTask) {
+      if (!this.queuedTasks.length) {
+        return;
+      }
+      this.shift();
+    }
+
+    const efficiency = this.status.getEfficiency();
+    this.activeTask.completed += efficiency;
+
+    if (this.activeTask.completed < this.activeTask.effort) {
+      return;
+    }
+
+    // completed
+    // TODO: log
+    this.shift();
   }
 
 
@@ -105,6 +144,7 @@ export class TasksService {
 
 
   constructor(
+    protected status: StatusService,
     protected storage: StorageService
   ) { }
 }

@@ -6,11 +6,11 @@ import * as moment from 'moment';
 })
 export class TickService {
 
-  @Output() tick = new EventEmitter<void>(); // 追加
+  @Output() tick = new EventEmitter<void>();
 
   private lastTick: moment.Moment = null;
   // FIXME: This must be configured
-  private tickScale: number = 0.1;
+  private tickScale = 0.1;
 
 
   public init(): void {
@@ -24,7 +24,7 @@ export class TickService {
     this.lastTick = moment();
 
     setInterval(() => {
-      console.log('tick!')
+      console.log('tick!');
       const m = moment();
       this.ticks(m);
       this.lastTick = m;
