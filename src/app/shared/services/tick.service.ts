@@ -6,7 +6,7 @@ import * as moment from 'moment';
 })
 export class TickService {
 
-  @Output() tick = new EventEmitter<void>();
+  @Output() tick = new EventEmitter<moment.Moment>();
 
   private lastTick: moment.Moment = null;
   // FIXME: This must be configured
@@ -34,7 +34,7 @@ export class TickService {
 
   public ticks(m: moment.Moment): void {
     console.log('tick', m.format());
-    this.tick.emit();
+    this.tick.emit(m);
   }
 
 }

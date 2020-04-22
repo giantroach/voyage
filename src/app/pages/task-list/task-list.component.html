@@ -10,11 +10,12 @@
   <vy-task [taskDef]="t"></vy-task>
 </ng-container>
 
-<ng-container *ngIf="tasks.length < 5">
-  <vy-task
-    [taskDef]="{id: null, name: 'Add new Task', icon: 'add'}"
-    [newTask]="true"
-    linkTo="/tasks/new">
-  </vy-task>
+<ng-container *ngIf="hasActiveTask">
+  <ng-container *ngIf="tasks.length < 5">
+    <vy-task
+      [taskDef]="{id: null, name: 'Add new Task', icon: 'add'}"
+      [newTask]="true"
+      linkTo="/tasks/new">
+    </vy-task>
+  </ng-container>
 </ng-container>
-

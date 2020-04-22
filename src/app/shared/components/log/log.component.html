@@ -1,6 +1,9 @@
 <mat-list>
   <mat-list-item *ngFor="let log of logs">
     <div mat-line>{{log.title}}</div>
-    <div mat-line> {{log.time | date}} </div>
+    <div mat-line>
+      <span class="time">{{log.time | date: 'shortTime'}}</span>
+      <span class="text">{{log.text}}</span>
+    </div>
   </mat-list-item>
 </mat-list>

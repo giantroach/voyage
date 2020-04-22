@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { StatusService } from './status.service';
 import { StorageService } from './storage.service';
+import { LogService } from './log.service';
+import * as moment from 'moment';
+
 import {
   StoredTasks,
   Task,
@@ -57,10 +60,7 @@ export class TasksService {
 
   public del(uid: string) {
     if (this.activeTask && this.activeTask.uid === uid) {
-      if (this.queuedTasks.length) {
-        this.activeTask = null;
-        return;
-      }
+      this.activeTask = null;
 
       if (!this.queuedTasks.length) { return; }
 
@@ -107,7 +107,7 @@ export class TasksService {
   }
 
 
-  public tack(): void {
+  public tack(m: moment.Moment): void {
     if (!this.activeTask) {
       if (!this.queuedTasks.length) {
         return;
@@ -123,7 +123,12 @@ export class TasksService {
     }
 
     // completed
-    // TODO: log
+    this.log.add({
+      title: 'Task Completed',
+      text: `${this.activeTask.name}`,
+      time: Number(m),
+      type:'success',
+    })
     this.shift();
   }
 
@@ -144,6 +149,7 @@ export class TasksService {
 
 
   constructor(
+    protected log: LogService,
     protected status: StatusService,
     protected storage: StorageService
   ) { }

@@ -9,18 +9,19 @@ import { TasksService } from 'app/shared/services/tasks.service';
 export class TaskListComponent implements OnInit {
 
   public tasks = [];
+  public hasActiveTask = false;
 
 
   public refresh() {
-    // this.tasksService.getActiveTask();
+    this.hasActiveTask = !!this.tasksService.getActiveTask();
     this.tasks = this.tasksService.getQueuedTasks();
-    console.log('this.tasks', this.tasks);
   }
 
 
   constructor(
     public tasksService: TasksService
   ) { }
+
 
   ngOnInit(): void {
     this.refresh();

@@ -1,10 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LogService } from 'app/shared/services/log.service';
 
-
-const log = [
-  { title: 'test', details: '', time: 1586622914770 }
-];
-
+import { Log } from 'app/types/log';
 
 @Component({
   selector: 'vy-log',
@@ -13,11 +10,25 @@ const log = [
 })
 export class LogComponent implements OnInit {
 
-  @Input() logs: Array<any> = log;
+  public logs: Log[] = [];
 
-  constructor() { }
+
+  public refresh() {
+    this.logs = this.logService.get();
+  }
+
+
+  constructor(
+    protected logService: LogService
+  ) { }
+
 
   ngOnInit(): void {
+    this.refresh();
+
+    this.logService.notification.subscribe((logs) => {
+      this.logs = logs;
+    });
   }
 
 }

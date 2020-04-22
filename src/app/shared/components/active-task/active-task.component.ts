@@ -26,7 +26,7 @@ export class ActiveTaskComponent implements OnInit {
   public refresh(): void {
     this.task = this.tasksService.getActiveTask();
     if (!this.task) { return; }
-    this.progress = Math.floor(this.task.completed / this.task.cost * 100) || 0;
+    this.progress = Math.floor(this.task.completed / this.task.effort * 100) || 0;
   }
 
 
@@ -40,7 +40,8 @@ export class ActiveTaskComponent implements OnInit {
     this.snackBar.open(`Task ${this.task.name} is deleted` , 'OK', {
       duration: 3000
     });
-    this.router.navigate(['/tasks']);
+    // FIXME:
+    this.router.navigate(['']);
   }
 
 
