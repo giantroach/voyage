@@ -1,13 +1,14 @@
 :host {
-  background-color: darkslategray;
   color: lightgray;
   justify-content: center;
   display: flex;
+  position: relative;
 }
 
 .status {
   display: flex;
   width: 400px;
+  z-index: 100;
 
   .you {
     flex: 1 1 auto;
@@ -20,5 +21,8 @@
 }
 
 .visual {
-
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  flex: 1 1 auto;
 }

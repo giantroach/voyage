@@ -6,6 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,8 @@ import { TaskComponent } from './shared/components/task/task.component';
 import { ActiveTaskComponent } from './shared/components/active-task/active-task.component';
 import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 import { TaskListComponent } from './pages/task-list/task-list.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { VisualComponent } from './shared/components/visual/visual.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,8 @@ import { TaskListComponent } from './pages/task-list/task-list.component';
     ActiveTaskComponent,
     EditTaskComponent,
     TaskListComponent,
+    HeaderComponent,
+    VisualComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,7 @@ import { TaskListComponent } from './pages/task-list/task-list.component';
     MatListModule,
     MatSnackBarModule,
     MatToolbarModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

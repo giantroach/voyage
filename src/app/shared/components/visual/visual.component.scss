@@ -1,0 +1,32 @@
+.day-sunny {
+  background: linear-gradient(rgba(57, 101, 121, 1), rgba(202, 218, 210, 1));
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.wave1, .wave2 {
+  height: 30px;
+  position: absolute;
+  width: 100%;
+  z-index: 12;
+  left: 0;
+}
+
+.wave1 {
+  bottom: 0;
+  animation: wave-animation1 20s infinite linear;
+  background: url('assets/imgs/wave.svg') 0 0 repeat-x;
+}
+
+.wave2 {
+  bottom: 5px;
+  animation: wave-animation1 40s infinite linear;
+  background: url('assets/imgs/wave.svg') 0 0 repeat-x;
+  opacity: 0.6;
+}
+
+@keyframes wave-animation1 {
+  0% { background-position: 0 0; }
+  100% { background-position: 2048px 0; }
+}
