@@ -15,18 +15,18 @@
 
 .wave1 {
   bottom: 0;
-  animation: wave-animation1 20s infinite linear;
-  background: url('assets/imgs/wave.svg') 0 0 repeat-x;
+  animation: wave-animation1 10s linear infinite;
+  background: url('assets/imgs/wave.svg') 0/cover repeat-x;
 }
 
 .wave2 {
   bottom: 5px;
   animation: wave-animation1 40s infinite linear;
-  background: url('assets/imgs/wave.svg') 0 0 repeat-x;
+  background: url('assets/imgs/wave.svg') 0/cover repeat-x;
   opacity: 0.6;
 }
 
 @keyframes wave-animation1 {
-  0% { background-position: 0 0; }
-  100% { background-position: 2048px 0; }
+  from { background-position: 0 0; }
+  to { background-position: 2048px 0; }
 }
