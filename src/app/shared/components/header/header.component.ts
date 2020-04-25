@@ -1,11 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { faHome, faTasks } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-header',
+  selector: 'vy-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  @Input() activeTab: string = 'home';
+
+  public faHome = faHome;
+  public faTasks = faTasks;
 
   constructor() { }
 

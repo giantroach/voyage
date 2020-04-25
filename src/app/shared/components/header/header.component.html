@@ -1,1 +1,13 @@
-<p>header works!</p>
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <mat-toolbar-row>
+    <div class="menu-item" [ngClass]="{'active': activeTab === 'home'}"
+         routerLink="/">
+      <fa-icon [icon]="faHome"></fa-icon>
+    </div>
+    <div class="menu-item" [ngClass]="{'active': activeTab === 'tasks'}"
+         routerLink="/tasks">
+      <fa-icon [icon]="faTasks"></fa-icon>
+    </div>
+    <div class="spacer"></div>
+  </mat-toolbar-row>
+</mat-toolbar>

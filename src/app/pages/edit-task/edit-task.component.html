@@ -1,3 +1,5 @@
+<vy-header activeTab="tasks"></vy-header>
+
 <ng-container *ngFor="let t of getTaskDef()">
   <ng-container *ngIf="t.subTasks">
     <vy-task [taskDef]="t" [linkTo]="'/tasks/new/' + t.id" [newTask]="true"></vy-task>
