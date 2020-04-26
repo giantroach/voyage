@@ -1,7 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ClerkService } from 'app/shared/services/clerk.service';
 import * as moment from 'moment';
 
-import { StatusService } from 'app/shared/services/status.service';
+import {
+  StatusService,
+  JourneyStatusService,
+  PlayerStatusService
+} from 'app/shared/services/';
 
 
 @Component({
@@ -28,16 +33,18 @@ export class StatusComponent implements OnInit {
 
   public refresh(): void {
     const dispStatus = this.statusService.getDispStatus();
+    const dispPlayer = this.playerStatusService.getDispStatus();
+    const dispJourney = this.journeyStatusService.getDispStatus();
 
-    // you
-    this.level = dispStatus.you.level;
-    this.healthPer = dispStatus.you.healthPer * 100;
-    this.foodPer = dispStatus.you.foodPer * 100;
-    this.waterPer = dispStatus.you.waterPer * 100;
+    // player: playerStatusService
+    this.level = dispPlayer.level;
+    this.healthPer = dispPlayer.healthPer * 100;
+    this.foodPer = dispPlayer.foodPer * 100;
+    this.waterPer = dispPlayer.waterPer * 100;
 
-    // progress
-    this.day = dispStatus.progress.days;
-    this.distance = dispStatus.progress.distance;
+    // journey: journeyStatusService
+    this.day = dispJourney.days;
+    this.distance = dispJourney.distance;
 
     // env
     this.weather = dispStatus.env.weather;
@@ -71,12 +78,18 @@ export class StatusComponent implements OnInit {
 
 
   constructor(
-    protected statusService: StatusService
+    protected statusService: StatusService,
+    protected journeyStatusService: JourneyStatusService,
+    protected playerStatusService: PlayerStatusService,
+    protected clerkService: ClerkService
   ) { }
 
 
   ngOnInit(): void {
     this.refresh();
+    this.clerkService.notification.subscribe(() => {
+      this.refresh();
+    });
   }
 
 }

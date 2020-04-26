@@ -27,7 +27,6 @@ export class TickService {
 
   public load(): void {
     const stored = this.storage.get<StoredTicks>('ticks');
-    console.log('stored', stored);
     if (stored && stored.lastTick) {
       this.lastTick = moment(stored.lastTick);
       return;
