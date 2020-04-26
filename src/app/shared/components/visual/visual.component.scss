@@ -6,27 +6,47 @@
 }
 
 .wave1, .wave2 {
-  height: 30px;
+  height: 64px;
   position: absolute;
   width: 100%;
-  z-index: 12;
   left: 0;
 }
 
 .wave1 {
   bottom: 0;
-  animation: wave-animation1 10s linear infinite;
-  background: url('assets/imgs/wave.svg') 0/cover repeat-x;
+  animation: wave-anim 10s linear infinite;
+  background: url('assets/imgs/wave.svg') 0 0/cover repeat-x;
+  z-index: 30;
 }
 
 .wave2 {
   bottom: 5px;
-  animation: wave-animation1 40s infinite linear;
-  background: url('assets/imgs/wave.svg') 0/cover repeat-x;
+  animation: wave-anim 40s infinite linear;
+  background: url('assets/imgs/wave.svg') 0 0/cover repeat-x;
   opacity: 0.6;
+  z-index: 20;
 }
 
-@keyframes wave-animation1 {
+@keyframes wave-anim {
   from { background-position: 0 0; }
   to { background-position: 2048px 0; }
+}
+
+.boat {
+  height: 128px;
+  width: 256px;
+  position: absolute;
+  z-index: 12;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  animation: ship-anim 3s infinite linear;
+  background: url('assets/imgs/boat.svg') 0 0/cover no-repeat;
+}
+
+@keyframes ship-anim {
+  0% { background-position: 0 0; }
+  50% { background-position: 0 12px; }
+  100% { background-position: 0 0; }
 }
