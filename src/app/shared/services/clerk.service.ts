@@ -24,6 +24,7 @@ export class ClerkService {
 
   public save(): void {
     this.tasks.save();
+    this.tick.save();
   }
 
 

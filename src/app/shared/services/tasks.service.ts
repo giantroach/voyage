@@ -142,7 +142,10 @@ export class TasksService {
 
 
   public init(): void {
-    const stored = this.storage.get<StoredTasks>('tasks');
+    const stored = this.storage.get<StoredTasks>('tasks') || {
+      activeTask: null,
+      queuedTasks: []
+    };
     this.activeTask = stored.activeTask;
     this.queuedTasks = stored.queuedTasks || [];
   }
