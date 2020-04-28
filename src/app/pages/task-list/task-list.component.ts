@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TasksService } from 'app/shared/services/tasks.service';
+import { TasksService } from 'app/shared/services/';
 
 @Component({
   selector: 'vy-task-list',

@@ -65,6 +65,15 @@ export class PlayerStatusService {
   }
 
 
+  public feed(food: number): void {
+    this.player.food += food;
+    if (this.player.food > 200) {
+      this.player.food = 200;
+    }
+    // TODO: emit event;
+  }
+
+
   public drink(): void {
     if (this.player.water > 0) {
       this.player.water -= 0.1;

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { TasksService } from 'app/shared/services/tasks.service';
+import { TasksService } from 'app/shared/services/';
 import { ClerkService } from 'app/shared/services/clerk.service';
 
 import { ActiveTask } from 'app/types/tasks';

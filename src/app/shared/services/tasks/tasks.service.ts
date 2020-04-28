@@ -1,20 +1,26 @@
-import { Injectable } from '@angular/core';
-import { StatusService } from './';
-import { StorageService } from './storage.service';
-import { LogService } from './log.service';
+import { Injectable, Output, EventEmitter } from '@angular/core';
+import { StatusService } from '../status/status.service';
+import { StorageService } from '../storage.service';
+import { LogService } from '../log.service';
+import taskDef from './task-def.json';
 import * as moment from 'moment';
 
 import {
   StoredTasks,
   Task,
   ActiveTask,
-  TaskDef
+  TaskDef,
+  SubTaskDef
 } from 'app/types/tasks';
+import { Event } from 'app/types/event';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
+
+  @Output() event = new EventEmitter<Event>();
+
 
   private activeTask: ActiveTask;
   private queuedTasks: Task[];
@@ -30,7 +36,12 @@ export class TasksService {
   }
 
 
-  public add(t: TaskDef): void {
+  public getTaskDef(): TaskDef {
+    return taskDef;
+  }
+
+
+  public add(t: SubTaskDef): void {
     if (this.getActiveTask()) {
       this.queuedTasks.push({
         id: t.id,
@@ -127,8 +138,9 @@ export class TasksService {
       title: 'Task Completed',
       text: `${this.activeTask.name}`,
       time: Number(m),
-      type:'success',
-    })
+      type: 'success',
+    });
+    this.event.emit({ type: 'task', id: this.activeTask.id });
     this.shift();
   }
 

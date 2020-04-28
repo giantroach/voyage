@@ -8,7 +8,7 @@ import { faHome, faTasks } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() activeTab: string = 'home';
+  @Input() activeTab = 'home';
 
   public faHome = faHome;
   public faTasks = faTasks;

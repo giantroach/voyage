@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { faFish, faCog } from '@fortawesome/free-solid-svg-icons';
 
-import { TasksService } from 'app/shared/services/tasks.service';
+import { TasksService } from 'app/shared/services/';
 
-import { TaskDef } from 'app/types/tasks';
+import { Task } from 'app/types/tasks';
 
 @Component({
   selector: 'vy-task',
@@ -15,12 +16,24 @@ export class TaskComponent implements OnInit {
 
   @Input() linkTo = '';
   @Input() newTask = false;
-  @Input() taskDef: TaskDef = null;
+  @Input() task: Task = null;
+
+
+  public getIcon(icon: string) {
+    console.log('icon', icon)
+    console.log('task', this.task)
+    switch (icon) {
+      case 'fish':
+        return faFish;
+      default:
+        return faCog;
+    }
+  }
 
 
   public deleteTask() {
-    this.tasksService.del(this.taskDef.uid);
-    this.snackBar.open(`Task ${this.taskDef.name} is deleted` , 'OK', {
+    this.tasksService.del(this.task.uid);
+    this.snackBar.open(`Task ${this.task.name} is deleted` , 'OK', {
       duration: 3000
     });
     this.router.navigate(['/tasks']);

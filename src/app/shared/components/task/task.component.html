@@ -1,23 +1,23 @@
-<div class="mat-elevation-z2" *ngIf="taskDef">
+<div class="mat-elevation-z2" *ngIf="task">
 
   <div class="task-item" *ngIf="!newTask">
     <ng-container *ngIf="linkTo">
       <div class="task" [routerLink]="linkTo">
         <div class="task-icon">
-          <mat-icon aria-hidden="false">{{taskDef.icon}}</mat-icon>
+          <fa-icon [icon]="getIcon(task.icon)"></fa-icon>
         </div>
 
-        <div class="title">{{taskDef.name}}</div>
+        <div class="title">{{task.name}}</div>
       </div>
     </ng-container>
 
     <ng-container *ngIf="!linkTo">
       <div class="task">
         <div class="task-icon">
-          <mat-icon aria-hidden="false">{{taskDef.icon}}</mat-icon>
+          <fa-icon [icon]="getIcon(task.icon)"></fa-icon>
         </div>
 
-        <div class="title">{{taskDef.name}}</div>
+        <div class="title">{{task.name}}</div>
       </div>
     </ng-container>
 
@@ -30,23 +30,22 @@
     <ng-container *ngIf="linkTo">
       <div class="task" [routerLink]="linkTo">
         <div class="task-icon">
-          <mat-icon aria-hidden="false">{{taskDef.icon}}</mat-icon>
+          <fa-icon [icon]="getIcon(task.icon)"></fa-icon>
         </div>
 
-        <div class="title">{{taskDef.name}}</div>
+        <div class="title">{{task.name}}</div>
       </div>
     </ng-container>
 
     <ng-container *ngIf="!linkTo">
       <div class="task">
         <div class="task-icon">
-          <mat-icon aria-hidden="false">{{taskDef.icon}}</mat-icon>
+          <fa-icon [icon]="getIcon(task.icon)"></fa-icon>
         </div>
 
-        <div class="title">{{taskDef.name}}</div>
+        <div class="title">{{task.name}}</div>
       </div>
     </ng-container>
   </div>
 
 </div>
-
