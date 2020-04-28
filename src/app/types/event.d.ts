@@ -4,6 +4,29 @@ interface Event {
 }
 
 
+interface EventDef {
+  [type: string]: TypeDef;
+}
+
+
+interface TypeDef {
+  [id: string]: IDDef;
+}
+
+
+interface IDDef {
+  does: Array<TaskDef>;
+}
+
+
+interface TaskDef {
+  service: string;
+  method: string;
+  args: Array<any>;
+}
+
+
 export {
-  Event
+  Event,
+  EventDef
 }

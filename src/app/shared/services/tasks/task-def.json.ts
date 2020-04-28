@@ -28,14 +28,14 @@ const TypeDef: TaskDef = {
     icon: 'fish',
     subTasks: [
       {
-        id: 'F0',
+        id: 'F1',
         name: 'Fishing - Short',
         icon: 'fish',
         cost: 0,
-        effort: 20
+        effort: 1
       },
       {
-        id: 'F1',
+        id: 'F2',
         name: 'Fishing - Long',
         icon: 'fish',
         cost: 0,

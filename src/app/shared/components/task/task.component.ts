@@ -20,8 +20,6 @@ export class TaskComponent implements OnInit {
 
 
   public getIcon(icon: string) {
-    console.log('icon', icon)
-    console.log('task', this.task)
     switch (icon) {
       case 'fish':
         return faFish;

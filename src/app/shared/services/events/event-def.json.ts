@@ -1,7 +1,11 @@
-export default {
+import { EventDef } from 'app/types/event';
+
+const EventDef: EventDef = {
   task: {
-    f0: {
-      do: [{service: 'player', method: 'feed', args: [5]}]
+    F1: {
+      does: [{service: 'playerStatus', method: 'feed', args: [5]}]
     }
   }
 };
+
+export default EventDef;
