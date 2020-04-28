@@ -38,9 +38,9 @@ export class StatusComponent implements OnInit {
 
     // player: playerStatusService
     this.level = dispPlayer.level;
-    this.healthPer = dispPlayer.healthPer * 100;
-    this.foodPer = dispPlayer.foodPer * 100;
-    this.waterPer = dispPlayer.waterPer * 100;
+    this.healthPer = this.toFixedPer(dispPlayer.healthPer);
+    this.foodPer = this.toFixedPer(dispPlayer.foodPer);
+    this.waterPer = this.toFixedPer(dispPlayer.waterPer);
 
     // journey: journeyStatusService
     this.day = dispJourney.days;
@@ -74,6 +74,11 @@ export class StatusComponent implements OnInit {
       case 'weather':
         return this.weather;
     }
+  }
+
+
+  public toFixedPer(n: number): number {
+    return Number((n * 100).toFixed(1));
   }
 
 

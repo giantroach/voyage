@@ -1,8 +1,14 @@
 :host {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 vy-status {
   flex: 0 0 200px;
+}
+
+vy-log {
+  flex: 1 1 auto;
+  overflow: auto;
 }
