@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TasksService } from '../';
+import { TasksService } from '../tasks/tasks.service';
 import { EventResolverService } from './event-resolver.service';
 
 import { Event } from 'app/types/event';

@@ -8,6 +8,10 @@ mat-toolbar-row {
     text-align: center;
   }
 
+  .spacer {
+    flex: 1 1 auto;
+  }
+
   .menu-item:hover {
     background-color: rgba(0, 0, 0, 0.25);
   }

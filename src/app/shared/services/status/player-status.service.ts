@@ -100,6 +100,12 @@ export class PlayerStatusService {
   }
 
 
+  public reset(): void {
+    this.storage.reset('player');
+    this.init();
+  }
+
+
   public save() {
     this.storage.save<StoredPlayer>('player', {
       health: this.player.health,

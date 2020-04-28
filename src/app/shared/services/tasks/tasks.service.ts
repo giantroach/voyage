@@ -145,6 +145,12 @@ export class TasksService {
   }
 
 
+  public reset(): void {
+    this.storage.reset('tasks');
+    this.init();
+  }
+
+
   public save(): void {
     this.storage.save<StoredTasks>('tasks', {
       activeTask: this.activeTask,

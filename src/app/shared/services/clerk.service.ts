@@ -1,13 +1,11 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { LogService } from './log.service';
-import {
-  StatusService,
-  PlayerStatusService,
-  JourneyStatusService
-} from './';
+import { StatusService } from './status/status.service';
+import { PlayerStatusService } from './status/player-status.service';
+import { JourneyStatusService } from './status/journey-status.service';
 import { EventsService } from './events/events.service';
 import { StorageService } from './storage.service';
-import { TasksService } from './';
+import { TasksService } from './tasks/tasks.service';
 import { TickService } from './tick.service';
 import * as moment from 'moment';
 
@@ -34,6 +32,14 @@ export class ClerkService {
     this.tick.save();
     this.journeyStatus.save();
     this.playerStatus.save();
+  }
+
+
+  public restart(): void {
+    this.tasks.reset();
+    this.tick.reset();
+    this.journeyStatus.reset();
+    this.playerStatus.reset();
   }
 
 

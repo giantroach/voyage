@@ -42,6 +42,12 @@ export class JourneyStatusService {
   }
 
 
+  public reset() {
+    this.storage.reset('journey');
+    this.init();
+  }
+
+
   public save() {
     this.storage.save<StoredJourney>('journey', {
       since: this.journey.since,

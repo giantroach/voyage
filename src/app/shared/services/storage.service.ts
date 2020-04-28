@@ -30,6 +30,11 @@ export class StorageService {
   }
 
 
+  public reset(key: string): void {
+    this.storage.removeItem(key);
+  }
+
+
   constructor() {
   }
 }

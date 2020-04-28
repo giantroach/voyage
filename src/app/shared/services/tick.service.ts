@@ -17,6 +17,15 @@ export class TickService {
   // FIXME: This must be configured
   private tickScale = 5; // seconds
 
+  private timer: number;
+
+
+  public reset(): void {
+    this.storage.reset('ticks');
+    clearInterval(this.timer);
+    this.init();
+  }
+
 
   public save(): void {
     this.storage.save<StoredTicks>('ticks', {
@@ -47,7 +56,7 @@ export class TickService {
     }
     this.lastTick = moment();
 
-    setInterval(() => {
+    this.timer = setInterval(() => {
       console.log('tick!');
       const m = moment();
       this.ticks(m);

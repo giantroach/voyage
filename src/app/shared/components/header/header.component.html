@@ -8,6 +8,11 @@
          routerLink="/tasks">
       <fa-icon [icon]="faTasks"></fa-icon>
     </div>
+
     <div class="spacer"></div>
+
+    <div class="menu-item" (click)="restart()">
+      <fa-icon [icon]="faTrash"></fa-icon>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
