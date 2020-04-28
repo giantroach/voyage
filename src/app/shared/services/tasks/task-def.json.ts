@@ -42,6 +42,27 @@ const TypeDef: TaskDef = {
         effort: 100
       }
     ]
+  },
+  rest: {
+    id: 'R0',
+    name: 'Rest',
+    icon: 'bed',
+    subTasks: [
+      {
+        id: 'R1',
+        name: 'Rest - Short',
+        icon: 'bed',
+        cost: 0,
+        effort: 100
+      },
+      {
+        id: 'R2',
+        name: 'Rest - Long',
+        icon: 'bed',
+        cost: 0,
+        effort: 1000
+      }
+    ]
   }
 };
 

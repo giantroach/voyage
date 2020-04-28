@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { TaskComponent } from 'app/shared/components/task/task.component';
 import { TasksService } from 'app/shared/services/';
 import { ClerkService } from 'app/shared/services/clerk.service';
 
@@ -12,7 +13,7 @@ import { ActiveTask } from 'app/types/tasks';
   templateUrl: './active-task.component.html',
   styleUrls: ['./active-task.component.scss']
 })
-export class ActiveTaskComponent implements OnInit {
+export class ActiveTaskComponent extends TaskComponent implements OnInit {
 
   @Input() linkTo = '';
 
@@ -35,27 +36,25 @@ export class ActiveTaskComponent implements OnInit {
   }
 
 
-  public deleteTask() {
-    this.tasksService.del(this.task.uid);
-    this.snackBar.open(`Task ${this.task.name} is deleted` , 'OK', {
-      duration: 3000
-    });
-    // FIXME:
-    this.router.navigate(['']);
-  }
-
-
   constructor(
+    protected clerkService: ClerkService,
     protected route: ActivatedRoute,
     protected router: Router,
-    protected tasksService: TasksService,
     protected snackBar: MatSnackBar,
-    protected clerkService: ClerkService
-  ) { }
+    protected tasksService: TasksService,
+  ) {
+    super(
+      route,
+      router,
+      snackBar,
+      tasksService,
+    );
+  }
 
 
   ngOnInit(): void {
     this.refresh();
+
     this.clerkService.notification.subscribe(() => {
       this.refresh();
     });

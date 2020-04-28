@@ -6,15 +6,6 @@ import { TasksService } from 'app/shared/services/';
 
 import { TaskDef, ParentTaskDef, SubTaskDef } from 'app/types/tasks';
 
-// // FIXME: locate this better place
-// const tasks = [
-//   { id: 'B0', name: 'Build', icon: 'build', subTasks: [
-//     { id: 'B1', name: 'Firm', icon: 'local_pizza', cost: 100, effort: 100 },
-//     { id: 'B1', name: 'Mast', icon: 'directions_boat', cost: 100, effort: 100 }
-//   ] },
-//   { id: 'F0', name: 'Fishing', icon: 'restaurant', cost: 100, effort: 10 }
-// ];
-
 @Component({
   selector: 'vy-edit-task',
   templateUrl: './edit-task.component.html',

@@ -1,7 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { faFish, faCog } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBed,
+  faCog,
+  faFish,
+  faPlus,
+} from '@fortawesome/free-solid-svg-icons';
 
 import { TasksService } from 'app/shared/services/';
 
@@ -21,8 +26,12 @@ export class TaskComponent implements OnInit {
 
   public getIcon(icon: string) {
     switch (icon) {
+      case 'bed':
+        return faBed;
       case 'fish':
         return faFish;
+      case 'plus':
+        return faPlus;
       default:
         return faCog;
     }
@@ -41,8 +50,8 @@ export class TaskComponent implements OnInit {
   constructor(
     protected route: ActivatedRoute,
     protected router: Router,
+    protected snackBar: MatSnackBar,
     protected tasksService: TasksService,
-    protected snackBar: MatSnackBar
   ) { }
 
 

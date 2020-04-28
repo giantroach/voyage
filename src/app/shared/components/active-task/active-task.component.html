@@ -3,7 +3,7 @@
   <div class="task-item" *ngIf="task">
     <div class="task" [routerLink]="linkTo">
       <div class="task-icon">
-        <mat-icon aria-hidden="false">{{task.icon}}</mat-icon>
+        <fa-icon [icon]="getIcon(task.icon)"></fa-icon>
       </div>
 
       <div class="title-progress">

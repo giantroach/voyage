@@ -61,16 +61,15 @@ export class PlayerStatusService {
     }  else {
       this.suffer(0.1);
     }
-    // TODO: emit event;
   }
 
 
   public feed(food: number): void {
+    const max = this.getMaxFood() * 1.5;
     this.player.food += food;
-    if (this.player.food > 200) {
-      this.player.food = 200;
+    if (this.player.food > max) {
+      this.player.food = max;
     }
-    // TODO: emit event;
   }
 
 
@@ -80,7 +79,15 @@ export class PlayerStatusService {
     }  else {
       this.suffer(0.2);
     }
-    // TODO: emit event;
+  }
+
+
+  public water(water: number): void {
+    const max = this.getMaxWater() * 1.5;
+    this.player.water += water;
+    if (this.player.water > max) {
+      this.player.water = max;
+    }
   }
 
 
@@ -89,6 +96,14 @@ export class PlayerStatusService {
     if (this.player.health <= 0) {
       this.player.health = 0;
       // TODO: game over
+    }
+  }
+
+
+  public recover(health: number): void {
+    this.player.health += health;
+    if (this.player.health > this.getMaxHealth() * 1.5) {
+      this.player.health = 200;
     }
   }
 

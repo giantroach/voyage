@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faHome, faTasks, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { ClerkService } from 'app/shared/services'
+import { ClerkService } from 'app/shared/services';
 
 @Component({
   selector: 'vy-header',
