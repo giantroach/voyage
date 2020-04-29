@@ -21,6 +21,8 @@ import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 import { TaskListComponent } from './pages/task-list/task-list.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { VisualComponent } from './shared/components/visual/visual.component';
+import { ShipConfigComponent } from './pages/ship-config/ship-config.component';
+import { ShipVisualComponent } from './shared/components/ship-visual/ship-visual.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { VisualComponent } from './shared/components/visual/visual.component';
     TaskListComponent,
     HeaderComponent,
     VisualComponent,
+    ShipConfigComponent,
+    ShipVisualComponent,
   ],
   imports: [
     BrowserModule,

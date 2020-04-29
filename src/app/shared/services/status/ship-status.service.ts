@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { StorageService } from '../storage.service';
 import { FacilitiesService } from '../facilities/facilities.service';
 
-import { Ship, StoredShip } from 'app/types/ship';
+import { Ship, StoredShip, ShipFacility } from 'app/types/ship';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,16 @@ export class ShipStatusService {
   }
 
 
+  public getSpace(): number[] {
+    return this.ship.space;
+  }
+
+
+  public getFacilities(): ShipFacility[] {
+    return this.ship.facilities;
+  }
+
+
   public reset(): void {
     this.storage.reset('ship');
     this.init();
@@ -43,7 +53,7 @@ export class ShipStatusService {
   public load() {
     const stored = this.storage.get<StoredShip>('ship') || {
       facilities: [],
-      space: [2, 2],
+      space: [2, 10],
       engine: 10
     };
 

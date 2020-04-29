@@ -1,0 +1,31 @@
+:host {
+  background-color: rgb(30, 54, 65);
+  display: flex;
+  align-items: center;
+}
+
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  align-items: center;
+
+  > .row {
+    display: flex;
+    flex: 0 0 30px;
+
+    > .col {
+      flex: 0 0 30px;
+      background-color: white;
+      border: 1px solid gray;
+      box-sizing: content-box;
+      width: 30px;
+      height: 30px;
+    }
+    > .col:hover {
+      background-color: red;
+      cursor: pointer;
+    }
+  }
+}

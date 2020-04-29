@@ -2,7 +2,7 @@ import { Facility } from './facilities';
 
 
 interface StoredShip {
-  facilities: Facility[];
+  facilities: ShipFacility[];
   space: number[]; // 1,3
   engine: number;
 }
@@ -14,7 +14,13 @@ interface Ship extends StoredShip {
 }
 
 
+interface ShipFacility extends Facility {
+  position: number[];
+}
+
+
 export {
   StoredShip,
   Ship,
+  ShipFacility,
 }
