@@ -8,6 +8,10 @@
          routerLink="/tasks">
       <fa-icon [icon]="faTasks"></fa-icon>
     </div>
+    <div class="menu-item" [ngClass]="{'active': activeTab === 'ship'}"
+         routerLink="/ship">
+      <fa-icon [icon]="faShip"></fa-icon>
+    </div>
 
     <div class="spacer"></div>
 

@@ -1,5 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { faHome, faTasks, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHome,
+  faShip,
+  faTasks,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons';
 import { ClerkService } from 'app/shared/services';
 
 @Component({
@@ -12,6 +17,7 @@ export class HeaderComponent implements OnInit {
   @Input() activeTab = 'home';
 
   public faHome = faHome;
+  public faShip = faShip;
   public faTasks = faTasks;
   public faTrash = faTrash;
 

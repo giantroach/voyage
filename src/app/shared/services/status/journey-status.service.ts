@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from '../storage.service';
+import { ShipStatusService } from './ship-status.service';
 import * as moment from 'moment';
 
 import { Journey, StoredJourney, DispJourney } from 'app/types/journey';
@@ -20,7 +21,8 @@ export class JourneyStatusService {
 
 
   public move(): void {
-    // FIXME:
+    const speed = this.shipStatus.getSpeed(); // per an hour
+    this.journey.distance += (speed / 60 / 12);
   }
 
 
@@ -73,5 +75,6 @@ export class JourneyStatusService {
 
   constructor(
     protected storage: StorageService,
+    protected shipStatus: ShipStatusService,
   ) { }
 }
