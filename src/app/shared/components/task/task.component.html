@@ -1,51 +1,14 @@
 <div class="mat-elevation-z2" *ngIf="task">
 
   <div class="task-item" *ngIf="!newTask">
-    <ng-container *ngIf="linkTo">
-      <div class="task" [routerLink]="linkTo">
-        <div class="task-icon">
-          <fa-icon [icon]="getIcon(task.icon)"></fa-icon>
-        </div>
-
-        <div class="title">{{task.name}}</div>
-      </div>
-    </ng-container>
-
-    <ng-container *ngIf="!linkTo">
-      <div class="task">
-        <div class="task-icon">
-          <fa-icon [icon]="getIcon(task.icon)"></fa-icon>
-        </div>
-
-        <div class="title">{{task.name}}</div>
-      </div>
-    </ng-container>
-
-    <div class="cancel" (click)="deleteTask()">
-      <mat-icon aria-hidden="false" aria-label="Stop current task">delete</mat-icon>
-    </div>
+    <vy-menu-item [name]="task.name" [icon]="task.icon" [linkTo]="linkTo"
+                  [dispCancel]="true" (cancel)="deleteTask()">
+    </vy-menu-item>
   </div>
 
   <div class="task-item" *ngIf="newTask">
-    <ng-container *ngIf="linkTo">
-      <div class="task" [routerLink]="linkTo">
-        <div class="task-icon">
-          <fa-icon [icon]="getIcon(task.icon)"></fa-icon>
-        </div>
-
-        <div class="title">{{task.name}}</div>
-      </div>
-    </ng-container>
-
-    <ng-container *ngIf="!linkTo">
-      <div class="task">
-        <div class="task-icon">
-          <fa-icon [icon]="getIcon(task.icon)"></fa-icon>
-        </div>
-
-        <div class="title">{{task.name}}</div>
-      </div>
-    </ng-container>
+    <vy-menu-item [name]="task.name" [icon]="task.icon" [linkTo]="linkTo">
+    </vy-menu-item>
   </div>
 
 </div>

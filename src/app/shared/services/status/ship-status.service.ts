@@ -53,7 +53,7 @@ export class ShipStatusService {
   public load() {
     const stored = this.storage.get<StoredShip>('ship') || {
       facilities: [],
-      space: [2, 10],
+      space: [2, 3],
       engine: 10
     };
 

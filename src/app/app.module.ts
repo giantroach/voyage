@@ -23,6 +23,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { VisualComponent } from './shared/components/visual/visual.component';
 import { ShipConfigComponent } from './pages/ship-config/ship-config.component';
 import { ShipVisualComponent } from './shared/components/ship-visual/ship-visual.component';
+import { MenuItemComponent } from './shared/components/menu-item/menu-item.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ShipVisualComponent } from './shared/components/ship-visual/ship-visual
     VisualComponent,
     ShipConfigComponent,
     ShipVisualComponent,
+    MenuItemComponent,
   ],
   imports: [
     BrowserModule,

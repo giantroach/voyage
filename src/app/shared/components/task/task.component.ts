@@ -24,20 +24,6 @@ export class TaskComponent implements OnInit {
   @Input() task: Task = null;
 
 
-  public getIcon(icon: string) {
-    switch (icon) {
-      case 'bed':
-        return faBed;
-      case 'fish':
-        return faFish;
-      case 'plus':
-        return faPlus;
-      default:
-        return faCog;
-    }
-  }
-
-
   public deleteTask() {
     this.tasksService.del(this.task.uid);
     this.snackBar.open(`Task ${this.task.name} is deleted` , 'OK', {

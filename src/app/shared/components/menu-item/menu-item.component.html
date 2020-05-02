@@ -1,0 +1,31 @@
+<div class="mat-elevation-z{{elevation}}">
+
+  <ng-container *ngIf="linkTo">
+    <div class="menu" [routerLink]="linkTo">
+      <div class="menu-icon">
+        <fa-icon [icon]="getIcon(icon)"></fa-icon>
+      </div>
+
+      <div class="title">{{name}}</div>
+    </div>
+
+    <div class="cancel" (click)="doCancel()" *ngIf="dispCancel">
+      <mat-icon>delete</mat-icon>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!linkTo">
+    <div class="menu">
+      <div class="menu-icon">
+        <fa-icon [icon]="getIcon(icon)"></fa-icon>
+      </div>
+
+      <div class="title">{{name}}</div>
+    </div>
+
+    <div class="cancel" (click)="doCancel()" *ngIf="dispCancel">
+      <mat-icon>delete</mat-icon>
+    </div>
+  </ng-container>
+
+</div>

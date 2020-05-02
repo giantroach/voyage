@@ -2,18 +2,20 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { TaskComponent } from 'app/shared/components/task/task.component';
+import { MenuItemComponent } from 'app/shared/components/menu-item/menu-item.component';
 import { TasksService } from 'app/shared/services/';
 import { ClerkService } from 'app/shared/services/clerk.service';
 
 import { ActiveTask } from 'app/types/tasks';
+import { Task } from 'app/types/tasks';
+
 
 @Component({
   selector: 'vy-active-task',
   templateUrl: './active-task.component.html',
   styleUrls: ['./active-task.component.scss']
 })
-export class ActiveTaskComponent extends TaskComponent implements OnInit {
+export class ActiveTaskComponent extends MenuItemComponent implements OnInit {
 
   @Input() linkTo = '';
 
@@ -36,6 +38,15 @@ export class ActiveTaskComponent extends TaskComponent implements OnInit {
   }
 
 
+  public deleteTask() {
+    this.tasksService.del(this.task.uid);
+    this.snackBar.open(`Task ${this.task.name} is deleted` , 'OK', {
+      duration: 3000
+    });
+    this.router.navigate(['/tasks']);
+  }
+
+
   constructor(
     protected clerkService: ClerkService,
     protected route: ActivatedRoute,
@@ -43,12 +54,7 @@ export class ActiveTaskComponent extends TaskComponent implements OnInit {
     protected snackBar: MatSnackBar,
     protected tasksService: TasksService,
   ) {
-    super(
-      route,
-      router,
-      snackBar,
-      tasksService,
-    );
+    super();
   }
 
 
