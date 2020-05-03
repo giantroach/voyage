@@ -35,6 +35,16 @@ export class ShipStatusService {
   }
 
 
+  public expandX(): void {
+    this.ship.space[0] += 1;
+  }
+
+
+  public expandY(): void {
+    this.ship.space[1] += 1;
+  }
+
+
   public reset(): void {
     this.storage.reset('ship');
     this.init();

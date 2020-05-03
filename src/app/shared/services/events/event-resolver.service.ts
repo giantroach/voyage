@@ -3,6 +3,7 @@ import { Event } from 'app/types/event';
 import def from './event-def.json';
 
 import { PlayerStatusService } from '../status/player-status.service';
+import { ShipStatusService } from '../status/ship-status.service';
 import { LogService } from '../log.service';
 
 @Injectable({
@@ -22,6 +23,7 @@ export class EventResolverService {
 
   constructor(
     protected playerStatus: PlayerStatusService,
+    protected shipStatus: ShipStatusService,
     protected log: LogService
   ) { }
 }

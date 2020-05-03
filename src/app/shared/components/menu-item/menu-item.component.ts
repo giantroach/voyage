@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {
   faArrowsAlt,
+  faArrowsAltH,
+  faArrowsAltV,
   faBed,
   faCog,
   faFish,
@@ -27,6 +29,10 @@ export class MenuItemComponent implements OnInit {
     switch (icon) {
       case 'arrowsAlt':
         return faArrowsAlt;
+      case 'arrowsAltV':
+        return faArrowsAltV;
+      case 'arrowsAltH':
+        return faArrowsAltH;
       case 'bed':
         return faBed;
       case 'fish':

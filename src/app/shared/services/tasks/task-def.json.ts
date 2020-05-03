@@ -5,6 +5,7 @@ const TypeDef: TaskDef = {
     id: 'B0',
     name: 'Build',
     icon: 'cog',
+    visible: false,
     subTasks: [
       {
         id: 'B1',
@@ -22,10 +23,35 @@ const TypeDef: TaskDef = {
       },
     ]
   },
+  expand: {
+    id: 'E0',
+    name: 'Expand',
+    icon: 'arrowsAlt',
+    visible: false,
+    subTasks: [
+      {
+        id: 'E1',
+        name: 'Expand - Vertical',
+        icon: 'arrowsAltV',
+        cost: null,
+        effort: null,
+        params: { direction: 'Y' }
+      },
+      {
+        id: 'E2',
+        name: 'Expand - Horizontal',
+        icon: 'arrowsAltH',
+        cost: null,
+        effort: null,
+        params: { direction: 'X' }
+      },
+    ]
+  },
   fishing: {
     id: 'F0',
     name: 'Fishing',
     icon: 'fish',
+    visible: true,
     subTasks: [
       {
         id: 'F1',
@@ -47,6 +73,7 @@ const TypeDef: TaskDef = {
     id: 'R0',
     name: 'Rest',
     icon: 'bed',
+    visible: true,
     subTasks: [
       {
         id: 'R1',

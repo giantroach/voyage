@@ -1,0 +1,12 @@
+<vy-header activeTab="ship"></vy-header>
+
+<vy-ship-visual [expandX]="expandX" [expandY]="expandY"></vy-ship-visual>
+
+<div>
+  <ng-container *ngFor="let t of expandTasks.subTasks">
+    <vy-menu-item [name]="t.name" [icon]="t.icon"
+                  (click)="addTask(t)"
+                  (mouseover)="focus(t.params.direction)">
+    </vy-menu-item>
+  </ng-container>
+</div>

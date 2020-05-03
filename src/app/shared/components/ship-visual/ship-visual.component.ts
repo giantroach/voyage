@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ShipStatusService } from 'app/shared/services/status/ship-status.service';
 import { ShipFacility } from 'app/types/ship';
 
@@ -8,6 +8,10 @@ import { ShipFacility } from 'app/types/ship';
   styleUrls: ['./ship-visual.component.scss']
 })
 export class ShipVisualComponent implements OnInit {
+
+
+  @Input() expandX = false;
+  @Input() expandY = false;
 
 
   public spaceX: number[];

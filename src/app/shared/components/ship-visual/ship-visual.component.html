@@ -2,5 +2,12 @@
   <div class="row" *ngFor="let i of spaceX">
     <div class="col" *ngFor="let j of spaceY">
     </div>
+
+    <div class="col expand" *ngIf="expandX"></div>
+  </div>
+
+  <div class="row" *ngIf="expandY">
+    <div class="col expand" *ngFor="let j of spaceY">
+    </div>
   </div>
 </div>

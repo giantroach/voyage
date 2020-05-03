@@ -7,7 +7,13 @@ const EventDef: EventDef = {
     },
     F2: {
       does: [{service: 'playerStatus', method: 'feed', args: [10]}]
-    }
+    },
+    E1: {
+      does: [{service: 'shipStatus', method: 'expandX', args: []}]
+    },
+    E2: {
+      does: [{service: 'shipStatus', method: 'expandY', args: []}]
+    },
   },
   rest: {
     R1: {

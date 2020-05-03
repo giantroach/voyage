@@ -27,6 +27,7 @@ interface ParentTaskDef {
   id: string;
   name: string;
   icon: string;
+  visible: boolean;
   subTasks: Array<SubTaskDef | ParentTaskDef>;
 }
 
@@ -36,6 +37,7 @@ interface SubTaskDef {
   icon: string;
   cost: number;
   effort: number;
+  params?: any;
 }
 
 

@@ -2,11 +2,12 @@
 
 <ng-container *ngFor="let t of getTaskDef()">
   <ng-container *ngIf="t.subTasks">
-    <vy-task [task]="t" [linkTo]="'/tasks/new/' + t.id" [newTask]="true"></vy-task>
+    <ng-container *ngIf="t.visible">
+      <vy-task [task]="t" [linkTo]="'/tasks/new/' + t.id" [newTask]="true"></vy-task>
+    </ng-container>
   </ng-container>
 
   <ng-container *ngIf="!t.subTasks">
     <vy-task [task]="t" (click)="addTask(t)" [newTask]="true"></vy-task>
   </ng-container>
 </ng-container>
-

@@ -10,6 +10,7 @@ import {
   Task,
   ActiveTask,
   TaskDef,
+  ParentTaskDef,
   SubTaskDef
 } from 'app/types/tasks';
 import { Event } from 'app/types/event';
@@ -36,8 +37,13 @@ export class TasksService {
   }
 
 
-  public getTaskDef(): TaskDef {
+  public getTaskDef(key = ''): TaskDef {
     return taskDef;
+  }
+
+
+  public getParentTaskDef(key): ParentTaskDef {
+    return taskDef[key];
   }
 
 
