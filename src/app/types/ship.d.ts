@@ -15,6 +15,8 @@ interface Ship extends StoredShip {
 
 
 interface ShipFacility extends Facility {
+  category: string;
+  id: string;
   position: number[];
 }
 

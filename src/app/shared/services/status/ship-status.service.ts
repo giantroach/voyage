@@ -13,15 +13,44 @@ export class ShipStatusService {
   private ship: Ship;
 
 
+  private facilityBuff(type: string, base = 0): number {
+    let buff = base;
+    let multiply = 1;
+
+    this.ship.facilities.forEach((shipFacility) => {
+      const facility = this.facilitiesService.getFacilityDetailDef(
+        shipFacility.category,
+        shipFacility.id
+      )
+      facility.effects.forEach((effect) => {
+        if (!effect.modifier) { return; }
+        if (effect.modifier.param !== type) { return; }
+        if (effect.modifier.operator === 'plus') {
+          buff += effect.modifier.value;
+        }
+        if (effect.modifier.operator === 'multiply') {
+          multiply = multiply * effect.modifier.value;
+        }
+      })
+    }, 0);
+    return Math.floor(base * multiply) + buff;
+  }
+
+
   public getWeight() {
     return this.ship.facilities.reduce((acc, cur) => {
-      return acc + this.facilitiesService.getSubFacilityDef(cur.category, cur.id).weight;
+      return acc + this.facilitiesService.getFacilityDetailDef(cur.category, cur.id).weight;
     }, 1);
   }
 
 
   public getSpeed() {
-    return this.ship.engine / (1 + Math.log(this.ship.weight));
+    return this.getEngine() / (1 + Math.log(this.ship.weight));
+  }
+
+
+  public getEngine(): number {
+    return this.facilityBuff('engine', this.ship.engine);
   }
 
 

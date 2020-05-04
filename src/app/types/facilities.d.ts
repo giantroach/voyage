@@ -7,23 +7,24 @@ interface Facility {
 ////////////////////////////////
 
 interface FacilityDef {
-  [category: string]: ParentFacilityDef;
+  [category: string]: FacilityCategoryDef;
 }
 
 
-interface ParentFacilityDef {
+interface FacilityCategoryDef {
   id: string;
   name: string;
   icon: string;
-  subFacilities: Array<SubFacilityDef>;
+  details: Array<FacilityDetailDef>;
 }
 
 
-interface SubFacilityDef {
+interface FacilityDetailDef {
   id: string;
   name: string;
   icon: string;
   weight: number;
+  size: number[];
   effects: Array<Effect>;
 }
 
@@ -49,8 +50,8 @@ interface Special {
 export {
   Facility,
   FacilityDef,
-  ParentFacilityDef,
-  SubFacilityDef,
+  FacilityCategoryDef,
+  FacilityDetailDef,
   Effect,
   Modifier,
   Special

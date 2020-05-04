@@ -1,6 +1,6 @@
 <div class="grid">
   <div class="row" *ngFor="let i of spaceX">
-    <div class="col" *ngFor="let j of spaceY">
+    <div class="col {{getCellClass(j, i)}}" *ngFor="let j of spaceY">
     </div>
 
     <div class="col expand" *ngIf="expandX"></div>

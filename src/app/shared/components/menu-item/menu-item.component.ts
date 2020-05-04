@@ -5,8 +5,10 @@ import {
   faArrowsAltV,
   faBed,
   faCog,
+  faDatabase,
   faFish,
   faPlus,
+  faTachometerAlt,
   faTools,
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -35,10 +37,14 @@ export class MenuItemComponent implements OnInit {
         return faArrowsAltH;
       case 'bed':
         return faBed;
+      case 'database':
+        return faDatabase;
       case 'fish':
         return faFish;
       case 'plus':
         return faPlus;
+      case 'tachometerAlt':
+        return faTachometerAlt;
       case 'faTools':
         return faTools;
       default:
