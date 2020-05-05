@@ -21,7 +21,7 @@ export class ShipStatusService {
       const facility = this.facilitiesService.getFacilityDetailDef(
         shipFacility.category,
         shipFacility.id
-      )
+      );
       facility.effects.forEach((effect) => {
         if (!effect.modifier) { return; }
         if (effect.modifier.param !== type) { return; }
@@ -31,7 +31,7 @@ export class ShipStatusService {
         if (effect.modifier.operator === 'multiply') {
           multiply = multiply * effect.modifier.value;
         }
-      })
+      });
     }, 0);
     return Math.floor(base * multiply) + buff;
   }

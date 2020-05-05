@@ -1,13 +1,22 @@
 <div class="grid">
-  <div class="row" *ngFor="let i of spaceX">
-    <div class="col {{getCellClass(j, i)}}" *ngFor="let j of spaceY">
-    </div>
+  <div class="row" *ngFor="let row of space">
+    <ng-container *ngFor="let col of row">
+      <ng-container *ngIf="col.occupied">
+        <div class="col occupied {{col.cls}}">
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="!col.occupied">
+        <div class="col {{col.cls}}">
+        </div>
+      </ng-container>
+    </ng-container>
 
     <div class="col expand" *ngIf="expandX"></div>
   </div>
 
   <div class="row" *ngIf="expandY">
-    <div class="col expand" *ngFor="let j of spaceY">
+    <div class="col expand" *ngFor="let col of space[0]">
     </div>
   </div>
 </div>
