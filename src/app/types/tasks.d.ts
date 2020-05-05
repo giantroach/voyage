@@ -10,6 +10,7 @@ interface Task {
   icon?: string;
   cost: number;
   effort: number;
+  params?: any;
 }
 
 interface ActiveTask extends Task {
@@ -28,7 +29,7 @@ interface ParentTaskDef {
   name: string;
   icon: string;
   visible: boolean;
-  subTasks: Array<SubTaskDef | ParentTaskDef>;
+  subTasks: Array<SubTaskDef>;
 }
 
 interface SubTaskDef {

@@ -7,11 +7,11 @@ import { TasksService } from 'app/shared/services/';
 import { TaskDef, ParentTaskDef, SubTaskDef } from 'app/types/tasks';
 
 @Component({
-  selector: 'vy-edit-task',
-  templateUrl: './edit-task.component.html',
-  styleUrls: ['./edit-task.component.scss']
+  selector: 'vy-task-edit',
+  templateUrl: './task-edit.component.html',
+  styleUrls: ['./task-edit.component.scss']
 })
-export class EditTaskComponent implements OnInit {
+export class TaskEditComponent implements OnInit {
 
   private taskID: string;
   private taskDef: TaskDef = null;

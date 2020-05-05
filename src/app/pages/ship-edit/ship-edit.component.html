@@ -1,1 +1,28 @@
-<p>ship-edit works!</p>
+<vy-header activeTab="ship"></vy-header>
+
+<vy-ship-visual [newFacilitySize]="newFacilitySize"
+                (selectLocation)="selectLocation($event)">
+</vy-ship-visual>
+
+<div>
+  <ng-container *ngIf="!category && !facilityID">
+    <ng-container *ngFor="let c of itrblCat">
+      <vy-menu-item [name]="c.name" [icon]="c.icon"
+                    [routerLink]="'/ship/edit/' + c.category">
+      </vy-menu-item>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="category && !facilityID">
+    <ng-container *ngFor="let d of (facilityDef[category].details)">
+      <vy-menu-item [name]="d.name" [icon]="d.icon"
+                    [routerLink]="'/ship/edit/' + category + '/' + d.id">
+      </vy-menu-item>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="category && facilityID">
+    <vy-menu-item name="Select a place to build" icon="arrowsAlt">
+    </vy-menu-item>
+  </ng-container>
+</div>

@@ -33,7 +33,7 @@ const FacilityDef: FacilityDef = {
       {
         id: 'SP1',
         name: 'Speed - Mast',
-        icon: 'database',
+        icon: 'tachometerAlt',
         weight: 10,
         size: [1, 3],
         effects: [

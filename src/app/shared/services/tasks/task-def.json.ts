@@ -8,16 +8,16 @@ const TypeDef: TaskDef = {
     visible: false,
     subTasks: [
       {
-        id: 'B1',
-        name: 'Build - Storage',
-        icon: 'cog',
+        id: 'ST1',
+        name: 'Build - Water tank',
+        icon: 'database',
         cost: 100,
         effort: 100
       },
       {
-        id: 'B2',
+        id: 'SP1',
         name: 'Build - Mast',
-        icon: 'cog',
+        icon: 'tachometerAlt',
         cost: 100,
         effort: 100
       },

@@ -44,12 +44,18 @@
         }
       }
     }
-    > .col:hover {
+    // > .col:hover {
+    //   background-color: red;
+    //   cursor: pointer;
+    // }
+    > .col.collision {
       background-color: red;
-      cursor: pointer;
+      cursor: not-allowed;
     }
-    > .col.expand {
+    > .col.expand,
+    > .col.highlight {
       background-color: blue;
+      cursor: pointer;
     }
   }
 }

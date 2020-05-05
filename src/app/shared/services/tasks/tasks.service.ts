@@ -37,13 +37,13 @@ export class TasksService {
   }
 
 
-  public getTaskDef(key = ''): TaskDef {
-    return taskDef;
+  public getTaskDef(): TaskDef {
+    return JSON.parse(JSON.stringify(taskDef));
   }
 
 
   public getParentTaskDef(key): ParentTaskDef {
-    return taskDef[key];
+    return JSON.parse(JSON.stringify(taskDef[key]));
   }
 
 
@@ -55,7 +55,8 @@ export class TasksService {
         name: t.name,
         icon: t.icon || '',
         cost: t.cost || 0,
-        effort: t.effort || 0
+        effort: t.effort || 0,
+        params: t.params || null
       });
       this.save();
       return;
@@ -67,6 +68,7 @@ export class TasksService {
       name: t.name,
       icon: t.icon || '',
       cost: t.cost || 0,
+      params: t.params || null,
       effort: t.effort || 0,
       since: Number(new Date()),
       completed: 0

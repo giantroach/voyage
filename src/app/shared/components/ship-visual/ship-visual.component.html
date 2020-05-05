@@ -1,13 +1,21 @@
 <div class="grid">
-  <div class="row" *ngFor="let row of space">
-    <ng-container *ngFor="let col of row">
+  <div class="row" *ngFor="let row of space; let y = index">
+    <ng-container *ngFor="let col of row; let x = index">
       <ng-container *ngIf="col.occupied">
         <div class="col occupied {{col.cls}}">
         </div>
       </ng-container>
 
-      <ng-container *ngIf="!col.occupied">
+      <ng-container *ngIf="!col.occupied && !newFacilitySize">
         <div class="col {{col.cls}}">
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="!col.occupied && newFacilitySize">
+        <div class="col {{col.cls}}"
+             (click)="selectNewFacilityLocation(x, y)"
+             (mouseover)="highlight(x, y)"
+             (mouseleave)="dehighlight(x, y)">
         </div>
       </ng-container>
     </ng-container>

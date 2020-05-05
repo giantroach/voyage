@@ -28,7 +28,7 @@ export class ShipExpandComponent implements OnInit {
 
 
   public addTask(subTaskDef: SubTaskDef): void {
-    const task = JSON.parse(JSON.stringify(subTaskDef));
+    const task = subTaskDef;
     const space = this.shipStatusService.getSpace();
 
     let n = 0;

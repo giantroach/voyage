@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FacilitiesService, ShipStatusService } from 'app/shared/services/';
 import { ShipFacility } from 'app/types/ship';
 import { FacilityDetailDef } from 'app/types/facilities';
@@ -19,14 +19,17 @@ export class ShipVisualComponent implements OnInit {
 
   @Input() expandX = false;
   @Input() expandY = false;
+  @Input() newFacilitySize: number[] = null;
+  @Output() selectLocation = new EventEmitter<number[]>();
 
 
   public space: Cell[][];
   public facilities: ShipFacility[];
   public facilityIdMap: {[id: string]: FacilityDetailDef} = {};
+  private prevHighlight: number[] = [];
 
 
-  public getCell(x, y): Cell {
+  public getCell(x: number, y: number): Cell {
     const cell = { occupied: false, cls: '' };
     const fs = this.facilities;
 
@@ -51,6 +54,73 @@ export class ShipVisualComponent implements OnInit {
     }
 
     return cell;
+  }
+
+
+  public highlight(x: number, y: number) {
+    const w = this.newFacilitySize[0];
+    const h = this.newFacilitySize[1];
+    const yMax = this.space.length;
+    const xMax = this.space[0].length;
+    let outOfBoundery = false;
+
+    if (yMax < y + h || xMax < x + w) {
+      outOfBoundery = true;
+    }
+
+    for (let i = y; i < y + h && i < yMax; i += 1) {
+      for (let j = x; j < x + w && j < xMax; j += 1) {
+        const cell = this.space[i][j];
+        if (outOfBoundery) {
+          cell.cls += ' collision';
+          continue;
+        }
+
+        if (cell.occupied) {
+          cell.cls += ' collision';
+        } else {
+          cell.cls += ' highlight';
+        }
+      }
+    }
+    this.prevHighlight = [x, y];
+  }
+
+
+  public dehighlight(x: number, y: number) {
+    const w = this.newFacilitySize[0];
+    const h = this.newFacilitySize[1];
+    const yMax = this.space.length;
+    const xMax = this.space[0].length;
+
+    for (let i = y; i < y + h && i < yMax; i += 1) {
+      for (let j = x; j < x + w && j < xMax; j += 1) {
+        const cell = this.space[i][j];
+        cell.cls = cell.cls.replace(/ collision| highlight/, '');
+      }
+    }
+  }
+
+
+  public selectNewFacilityLocation(x: number, y: number): void {
+    const w = this.newFacilitySize[0];
+    const h = this.newFacilitySize[1];
+    const yMax = this.space.length;
+    const xMax = this.space[0].length;
+
+    if (yMax < y + h || xMax < x + w) {
+      return; // out of boundary
+    }
+
+    for (let i = y; i < y + h && i < yMax; i += 1) {
+      for (let j = x; j < x + w && j < xMax; j += 1) {
+        const cell = this.space[i][j];
+        if (cell.occupied) {
+          return; // collision
+        }
+      }
+    }
+    this.selectLocation.emit([x, y]);
   }
 
 
