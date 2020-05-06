@@ -5,12 +5,14 @@ interface StoredTasks {
 
 interface Task {
   id: string;
+  category: string;
   uid: string;
   name: string;
   icon?: string;
   cost: number;
   effort: number;
   params?: any;
+  args?: Array<any>;
 }
 
 interface ActiveTask extends Task {
@@ -21,24 +23,25 @@ interface ActiveTask extends Task {
 ////////////////////////////////
 
 interface TaskDef {
-  [key: string]: ParentTaskDef;
+  [category: string]: TaskCategoryDef;
 }
 
-interface ParentTaskDef {
+interface TaskCategoryDef {
   id: string;
   name: string;
   icon: string;
   visible: boolean;
-  subTasks: Array<SubTaskDef>;
+  subTasks: Array<TaskDetailDef>;
 }
 
-interface SubTaskDef {
+interface TaskDetailDef {
   id: string;
   name: string;
   icon: string;
   cost: number;
   effort: number;
-  params?: any;
+  args?: Array<any>; // args for event resolver
+  params?: any; // params for logics
 }
 
 
@@ -47,6 +50,6 @@ export {
   Task,
   ActiveTask,
   TaskDef,
-  ParentTaskDef,
-  SubTaskDef
+  TaskCategoryDef,
+  TaskDetailDef
 }

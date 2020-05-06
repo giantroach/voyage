@@ -1,12 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {
-  faBed,
-  faCog,
-  faFish,
-  faPlus,
-} from '@fortawesome/free-solid-svg-icons';
 
 import { TasksService } from 'app/shared/services/';
 

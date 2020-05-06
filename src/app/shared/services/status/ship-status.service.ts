@@ -55,12 +55,21 @@ export class ShipStatusService {
 
 
   public getSpace(): number[] {
-    return this.ship.space;
+    return JSON.parse(JSON.stringify(this.ship.space));
   }
 
 
   public getFacilities(): ShipFacility[] {
-    return this.ship.facilities;
+    return JSON.parse(JSON.stringify(this.ship.facilities));
+  }
+
+
+  public addFacility(category, id, position): void {
+    this.ship.facilities.push({
+      category: category,
+      id: id,
+      position: position
+    });
   }
 
 

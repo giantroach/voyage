@@ -1,16 +1,17 @@
 interface Event {
-  id: string;
-  type: string;
+  category: string;
+  subCategory: string;
+  args?: any[];
 }
 
 
 interface EventDef {
-  [type: string]: TypeDef;
+  [category: string]: TypeDef;
 }
 
 
 interface TypeDef {
-  [id: string]: IDDef;
+  [subCategory: string]: IDDef;
 }
 
 

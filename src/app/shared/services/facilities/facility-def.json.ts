@@ -27,7 +27,7 @@ const FacilityDef: FacilityDef = {
 
   engine: {
     id: 'SP0',
-    name: 'Speed',
+    name: 'Engine',
     icon: 'tachometerAlt',
     details: [
       {

@@ -1,13 +1,23 @@
 <vy-header activeTab="tasks"></vy-header>
 
-<ng-container *ngFor="let t of getTaskDef()">
-  <ng-container *ngIf="t.subTasks">
-    <ng-container *ngIf="t.visible">
-      <vy-task [task]="t" [linkTo]="'/tasks/new/' + t.id" [newTask]="true"></vy-task>
+<vy-status></vy-status>
+
+<div>
+  <ng-container *ngIf="!category">
+    <ng-container *ngFor="let c of itrblCat">
+      <ng-container *ngIf="c.visible">
+        <vy-menu-item [name]="c.name" [icon]="c.icon"
+                      [routerLink]="'/tasks/new/' + c.category">
+        </vy-menu-item>
+      </ng-container>
     </ng-container>
   </ng-container>
 
-  <ng-container *ngIf="!t.subTasks">
-    <vy-task [task]="t" (click)="addTask(t)" [newTask]="true"></vy-task>
+  <ng-container *ngIf="category">
+    <ng-container *ngFor="let t of taskDef[category].subTasks">
+      <vy-menu-item [name]="t.name" [icon]="t.icon"
+                    (click)="addTask(t)">
+      </vy-menu-item>
+    </ng-container>
   </ng-container>
-</ng-container>
+</div>

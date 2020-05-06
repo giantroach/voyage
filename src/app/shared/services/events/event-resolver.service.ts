@@ -14,9 +14,11 @@ export class EventResolverService {
 
   public resolve(e: Event) {
     console.log('resolve', e);
-    const target = def[e.type][e.id];
+    const target = def[e.category][e.subCategory];
+
     target.does.forEach((d) => {
-      this[d.service][d.method].apply(this[d.service], d.args);
+      const args = d.args.concat(e.args);
+      this[d.service][d.method].apply(this[d.service], args);
     });
   }
 

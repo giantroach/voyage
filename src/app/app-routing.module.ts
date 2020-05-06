@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'tasks', component: TaskListComponent },
   { path: 'tasks/new', component: TaskEditComponent },
-  { path: 'tasks/new/:task', component: TaskEditComponent },
+  { path: 'tasks/new/:category', component: TaskEditComponent },
   { path: 'ship', component: ShipDetailComponent },
   { path: 'ship/expand', component: ShipExpandComponent },
   { path: 'ship/edit', component: ShipEditComponent },

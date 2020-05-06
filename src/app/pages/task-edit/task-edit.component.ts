@@ -4,7 +4,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { TasksService } from 'app/shared/services/';
 
-import { TaskDef, ParentTaskDef, SubTaskDef } from 'app/types/tasks';
+import { TaskDef, TaskCategoryDef, TaskDetailDef } from 'app/types/tasks';
+
+interface IteratableCat {
+  category: string;
+  icon: string;
+  id: string;
+  name: string;
+}
 
 @Component({
   selector: 'vy-task-edit',
@@ -13,21 +20,15 @@ import { TaskDef, ParentTaskDef, SubTaskDef } from 'app/types/tasks';
 })
 export class TaskEditComponent implements OnInit {
 
-  private taskID: string;
-  private taskDef: TaskDef = null;
+  public taskDef: TaskDef = null;
+  public category: string;
+
+  public itrblCat: IteratableCat[] = null;
 
 
-  public getTaskDef(): Array<ParentTaskDef | SubTaskDef> {
-    if (this.taskID) {
-      return Object.values(this.taskDef).find(t => t.id === this.taskID).subTasks;
-    }
-    return Object.values(this.taskDef);
-  }
-
-
-  public addTask(subTaskDef: SubTaskDef): void {
-    this.tasksService.add(subTaskDef);
-    this.snackBar.open(`Task ${subTaskDef.name} is added` , 'OK', {
+  public addTask(taskDetailDef: TaskDetailDef): void {
+    this.tasksService.add(this.category, taskDetailDef);
+    this.snackBar.open(`Task ${taskDetailDef.name} is added` , 'OK', {
       duration: 3000
     });
     this.router.navigate(['/tasks']);
@@ -43,8 +44,21 @@ export class TaskEditComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.taskID = this.route.snapshot.paramMap.get('task');
     this.taskDef = this.tasksService.getTaskDef();
+    this.itrblCat = Object.keys(this.taskDef).map((key) => {
+      const def = this.taskDef[key];
+      return {
+        category: key,
+        icon: def.icon,
+        id: def.id,
+        name: def.name,
+        visible: def.visible
+      };
+    });
+
+    this.route.params.subscribe((params) => {
+      this.category = params.category || '';
+    });
   }
 
 }

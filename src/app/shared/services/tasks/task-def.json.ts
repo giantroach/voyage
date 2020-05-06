@@ -12,14 +12,16 @@ const TypeDef: TaskDef = {
         name: 'Build - Water tank',
         icon: 'database',
         cost: 100,
-        effort: 100
+        effort: 1,
+        args: ['storage', 'ST1']
       },
       {
         id: 'SP1',
         name: 'Build - Mast',
         icon: 'tachometerAlt',
         cost: 100,
-        effort: 100
+        effort: 100,
+        args: ['engine', 'SP1']
       },
     ]
   },
@@ -58,14 +60,16 @@ const TypeDef: TaskDef = {
         name: 'Fishing - Short',
         icon: 'fish',
         cost: 0,
-        effort: 1
+        effort: 1,
+        args: [5]
       },
       {
         id: 'F2',
         name: 'Fishing - Long',
         icon: 'fish',
         cost: 0,
-        effort: 100
+        effort: 100,
+        args: [10]
       }
     ]
   },
@@ -80,14 +84,16 @@ const TypeDef: TaskDef = {
         name: 'Rest - Short',
         icon: 'bed',
         cost: 0,
-        effort: 100
+        effort: 1,
+        args: [5]
       },
       {
         id: 'R2',
         name: 'Rest - Long',
         icon: 'bed',
         cost: 0,
-        effort: 1000
+        effort: 1000,
+        args: [50]
       }
     ]
   }

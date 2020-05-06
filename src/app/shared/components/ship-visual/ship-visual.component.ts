@@ -131,10 +131,7 @@ export class ShipVisualComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.facilities = this.shipStatusService.getFacilities();
-    this.facilities = [
-      { category: 'engine', id: 'SP1', position: [1, 0] }
-    ];
+    this.facilities = this.shipStatusService.getFacilities();
     this.facilities.forEach((f) => {
       this.facilityIdMap[f.id] = this.facilitiesService.getFacilityDetailDef(
         f.category, f.id

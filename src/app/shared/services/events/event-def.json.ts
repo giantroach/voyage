@@ -2,25 +2,20 @@ import { EventDef } from 'app/types/event';
 
 const EventDef: EventDef = {
   task: {
-    F1: {
-      does: [{service: 'playerStatus', method: 'feed', args: [5]}]
-    },
-    F2: {
-      does: [{service: 'playerStatus', method: 'feed', args: [10]}]
-    },
     E1: {
       does: [{service: 'shipStatus', method: 'expandX', args: []}]
     },
     E2: {
       does: [{service: 'shipStatus', method: 'expandY', args: []}]
     },
-  },
-  rest: {
-    R1: {
-      does: [{service: 'playerStatus', method: 'recover', args: [10]}]
+    fishing: {
+      does: [{service: 'playerStatus', method: 'feed', args: []}]
     },
-    R2: {
-      does: [{service: 'playerStatus', method: 'recover', args: [100]}]
+    build: {
+      does: [{service: 'shipStatus', method: 'addFacility', args: []}]
+    },
+    rest: {
+      does: [{service: 'playerStatus', method: 'recover', args: []}]
     }
   }
 };

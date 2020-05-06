@@ -10,8 +10,8 @@ import {
   Task,
   ActiveTask,
   TaskDef,
-  ParentTaskDef,
-  SubTaskDef
+  TaskCategoryDef,
+  TaskDetailDef
 } from 'app/types/tasks';
 import { Event } from 'app/types/event';
 
@@ -42,21 +42,23 @@ export class TasksService {
   }
 
 
-  public getParentTaskDef(key): ParentTaskDef {
+  public getTaskCategoryDef(key): TaskCategoryDef {
     return JSON.parse(JSON.stringify(taskDef[key]));
   }
 
 
-  public add(t: SubTaskDef): void {
+  public add(category: string, t: TaskDetailDef): void {
     if (this.getActiveTask()) {
       this.queuedTasks.push({
         id: t.id,
+        category: category,
         uid: this.genUID(),
         name: t.name,
         icon: t.icon || '',
         cost: t.cost || 0,
         effort: t.effort || 0,
-        params: t.params || null
+        params: t.params || null,
+        args: t.args || null
       });
       this.save();
       return;
@@ -64,11 +66,13 @@ export class TasksService {
 
     this.activeTask = {
       id: t.id,
+      category: category,
       uid: this.genUID(),
       name: t.name,
       icon: t.icon || '',
       cost: t.cost || 0,
       params: t.params || null,
+      args: t.args || null,
       effort: t.effort || 0,
       since: Number(new Date()),
       completed: 0
@@ -148,7 +152,11 @@ export class TasksService {
       time: Number(m),
       type: 'success',
     });
-    this.event.emit({ type: 'task', id: this.activeTask.id });
+    this.event.emit({
+      category: 'task',
+      subCategory: this.activeTask.category,
+      args: this.activeTask.args
+    });
     this.shift();
   }
 

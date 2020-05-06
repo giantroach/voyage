@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TasksService, ShipStatusService, FacilitiesService } from 'app/shared/services/';
 
-import { TaskDef, ParentTaskDef, SubTaskDef } from 'app/types/tasks';
+import { TaskDef, TaskCategoryDef, TaskDetailDef } from 'app/types/tasks';
 import { FacilityDef } from 'app/types/facilities';
 
 interface IteratableCat {
@@ -28,19 +28,18 @@ export class ShipEditComponent implements OnInit {
   public newFacilitySize: number[] = null;
 
 
-  public selectBuild(subTaskDef: SubTaskDef) {
+  public selectBuild(subTaskDef: TaskDetailDef) {
     const facility = this.facilitiesService.getFacilityDetailDef('build', subTaskDef.id);
   }
 
 
   public selectLocation([x, y]: number[]) {
-    const buildTasks = this.tasksService.getParentTaskDef('build');
+    const buildTasks = this.tasksService.getTaskCategoryDef('build');
     const task = buildTasks.subTasks.find(st => st.id === this.facilityID);
 
-    // FIXME: here we need location param to set
+    task.args = [this.category, this.facilityID, [x, y]];
 
-
-    this.tasksService.add(task);
+    this.tasksService.add('build', task);
     this.snackBar.open(`Task ${task.name} is added` , 'OK', {
       duration: 3000
     });
@@ -71,7 +70,6 @@ export class ShipEditComponent implements OnInit {
     });
 
     this.route.params.subscribe((params) => {
-      console.log('params', params);
       this.category = params.category || '';
       this.facilityID = params.facility || '';
 
