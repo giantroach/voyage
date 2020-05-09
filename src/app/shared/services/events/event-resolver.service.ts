@@ -4,7 +4,7 @@ import def from './event-def.json';
 
 import { PlayerStatusService } from '../status/player-status.service';
 import { ShipStatusService } from '../status/ship-status.service';
-import { LogService } from '../log.service';
+import { LogService } from '../log/log.service';
 
 @Injectable({
   providedIn: 'root'

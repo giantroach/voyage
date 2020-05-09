@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { StorageService } from '../storage.service';
+import { StorageService } from '../storage/storage.service';
 import { FacilitiesService } from '../facilities/facilities.service';
 
 import { Ship, StoredShip, ShipFacility } from 'app/types/ship';

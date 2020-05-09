@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { MenuItemComponent } from 'app/shared/components/menu-item/menu-item.component';
 import { TasksService } from 'app/shared/services/';
-import { ClerkService } from 'app/shared/services/clerk.service';
+import { ClerkService } from 'app/shared/services/clerk/clerk.service';
 
 import { ActiveTask } from 'app/types/tasks';
 import { Task } from 'app/types/tasks';

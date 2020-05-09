@@ -2,7 +2,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import * as moment from 'moment';
 
-import { StorageService } from '../storage.service';
+import { StorageService } from '../storage/storage.service';
 
 import { Status, DispStatus } from 'app/types/status';
 

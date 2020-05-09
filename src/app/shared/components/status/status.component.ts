@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ClerkService } from 'app/shared/services/clerk.service';
+import { ClerkService } from 'app/shared/services/clerk/clerk.service';
 import * as moment from 'moment';
 
 import {

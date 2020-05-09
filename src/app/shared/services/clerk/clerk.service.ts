@@ -1,13 +1,13 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { LogService } from './log.service';
-import { StatusService } from './status/status.service';
-import { PlayerStatusService } from './status/player-status.service';
-import { ShipStatusService } from './status/ship-status.service';
-import { JourneyStatusService } from './status/journey-status.service';
-import { EventsService } from './events/events.service';
-import { StorageService } from './storage.service';
-import { TasksService } from './tasks/tasks.service';
-import { TickService } from './tick.service';
+import { LogService } from '../log/log.service';
+import { StatusService } from '../status/status.service';
+import { PlayerStatusService } from '../status/player-status.service';
+import { ShipStatusService } from '../status/ship-status.service';
+import { JourneyStatusService } from '../status/journey-status.service';
+import { EventsService } from '../events/events.service';
+import { StorageService } from '../storage/storage.service';
+import { TasksService } from '../tasks/tasks.service';
+import { TickService } from '../tick/tick.service';
 import * as moment from 'moment';
 
 @Injectable({

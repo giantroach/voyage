@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { StorageService } from '../storage.service';
+import { StorageService } from '../storage/storage.service';
 import { JourneyStatusService } from './journey-status.service';
 import * as moment from 'moment';
 

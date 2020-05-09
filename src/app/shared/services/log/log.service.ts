@@ -1,5 +1,5 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { StorageService } from './storage.service';
+import { StorageService } from '../storage/storage.service';
 
 import { Log } from 'app/types/log';
 

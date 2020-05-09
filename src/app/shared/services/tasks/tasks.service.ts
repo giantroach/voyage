@@ -1,7 +1,7 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { StatusService } from '../status/status.service';
-import { StorageService } from '../storage.service';
-import { LogService } from '../log.service';
+import { StorageService } from '../storage/storage.service';
+import { LogService } from '../log/log.service';
 import taskDef from './task-def.json';
 import * as moment from 'moment';
 

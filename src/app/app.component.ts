@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ClerkService } from 'app/shared/services/clerk.service';
+import { ClerkService } from 'app/shared/services/clerk/clerk.service';
 
 @Component({
   selector: 'vy-root',
