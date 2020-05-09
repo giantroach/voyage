@@ -65,11 +65,7 @@ export class ShipStatusService {
 
 
   public addFacility(category, id, position): void {
-    this.ship.facilities.push({
-      category: category,
-      id: id,
-      position: position
-    });
+    this.ship.facilities.push({ category, id, position });
   }
 
 

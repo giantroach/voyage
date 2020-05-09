@@ -51,7 +51,7 @@ export class TasksService {
     if (this.getActiveTask()) {
       this.queuedTasks.push({
         id: t.id,
-        category: category,
+        category,
         uid: this.genUID(),
         name: t.name,
         icon: t.icon || '',
@@ -66,7 +66,7 @@ export class TasksService {
 
     this.activeTask = {
       id: t.id,
-      category: category,
+      category,
       uid: this.genUID(),
       name: t.name,
       icon: t.icon || '',
