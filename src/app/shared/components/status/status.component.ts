@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ClerkService } from 'app/shared/services/clerk/clerk.service';
 import * as moment from 'moment';
 
 import {
-  StatusService,
+  ClerkService,
   JourneyStatusService,
-  PlayerStatusService
+  PlayerStatusService,
+  WeatherStatusService,
 } from 'app/shared/services/';
 
 
@@ -32,9 +32,10 @@ export class StatusComponent implements OnInit {
 
 
   public refresh(): void {
-    const dispStatus = this.statusService.getDispStatus();
+    // const dispStatus = this.statusService.getDispStatus();
     const dispPlayer = this.playerStatusService.getDispStatus();
     const dispJourney = this.journeyStatusService.getDispStatus();
+    const dispWeather = this.weatherStatusService.getDispStatus();
 
     // player: playerStatusService
     this.level = dispPlayer.level;
@@ -47,7 +48,7 @@ export class StatusComponent implements OnInit {
     this.distance = this.toFixed(dispJourney.distance);
 
     // env
-    this.weather = dispStatus.env.weather;
+    this.weather = dispWeather.now;
   }
 
 
@@ -83,9 +84,9 @@ export class StatusComponent implements OnInit {
 
 
   constructor(
-    protected statusService: StatusService,
     protected journeyStatusService: JourneyStatusService,
     protected playerStatusService: PlayerStatusService,
+    protected weatherStatusService: WeatherStatusService,
     protected clerkService: ClerkService
   ) { }
 

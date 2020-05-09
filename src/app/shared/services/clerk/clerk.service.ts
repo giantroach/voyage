@@ -1,6 +1,5 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { LogService } from '../log/log.service';
-import { StatusService } from '../status/status.service';
 import { PlayerStatusService } from '../status/player-status.service';
 import { ShipStatusService } from '../status/ship-status.service';
 import { JourneyStatusService } from '../status/journey-status.service';
@@ -51,7 +50,6 @@ export class ClerkService {
 
     this.events.init();
     this.log.init();
-    this.status.init();
     this.journeyStatus.init();
     this.playerStatus.init();
     this.shipStatus.init();
@@ -70,7 +68,6 @@ export class ClerkService {
     protected journeyStatus: JourneyStatusService,
     protected playerStatus: PlayerStatusService,
     protected shipStatus: ShipStatusService,
-    protected status: StatusService,
     protected storage: StorageService,
     protected tasks: TasksService,
     protected tick: TickService

@@ -1,5 +1,5 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { StatusService } from '../status/status.service';
+import { PlayerStatusService } from '../status/player-status.service';
 import { StorageService } from '../storage/storage.service';
 import { LogService } from '../log/log.service';
 import taskDef from './task-def.json';
@@ -138,7 +138,7 @@ export class TasksService {
       this.shift();
     }
 
-    const efficiency = this.status.getEfficiency();
+    const efficiency = this.playerStatus.getEfficiency();
     this.activeTask.completed += efficiency;
 
     if (this.activeTask.completed < this.activeTask.effort) {
@@ -187,7 +187,7 @@ export class TasksService {
 
   constructor(
     protected log: LogService,
-    protected status: StatusService,
+    protected playerStatus: PlayerStatusService,
     protected storage: StorageService
   ) { }
 }
