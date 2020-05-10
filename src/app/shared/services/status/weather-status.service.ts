@@ -13,7 +13,7 @@ export class WeatherStatusService {
   private weather: Weather;
   private defaultThrottle = 12 * 10; // once in 10 min. (60 / 5 = 12)
   private minTransition = 6 * 12; // 12 hrs
-  private maxTransition = 6 * 12; // 24 hrs
+  private maxTransition = 6 * 24; // 24 hrs
   private dispWeatherName = [
     'Sunny',
     'Cloudy',
