@@ -1,6 +1,7 @@
 export * from './clerk/clerk.service';
 export * from './facilities/facilities.service';
 export * from './log/log.service';
+export * from './karma/karma.service';
 export * from './status/journey-status.service';
 export * from './status/player-status.service';
 export * from './status/ship-status.service';

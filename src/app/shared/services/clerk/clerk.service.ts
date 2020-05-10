@@ -3,6 +3,7 @@ import { LogService } from '../log/log.service';
 import { PlayerStatusService } from '../status/player-status.service';
 import { ShipStatusService } from '../status/ship-status.service';
 import { JourneyStatusService } from '../status/journey-status.service';
+import { WeatherStatusService } from '../status/weather-status.service';
 import { EventsService } from '../events/events.service';
 import { StorageService } from '../storage/storage.service';
 import { TasksService } from '../tasks/tasks.service';
@@ -22,6 +23,7 @@ export class ClerkService {
     this.tasks.tack(m);
     this.journeyStatus.tack(m);
     this.playerStatus.tack(m);
+    this.weatherStatus.tack(m);
     this.save();
     this.notification.emit();
   }
@@ -33,6 +35,7 @@ export class ClerkService {
     this.journeyStatus.save();
     this.playerStatus.save();
     this.shipStatus.save();
+    this.weatherStatus.save();
   }
 
 
@@ -42,6 +45,7 @@ export class ClerkService {
     this.journeyStatus.reset();
     this.playerStatus.reset();
     this.shipStatus.reset();
+    this.weatherStatus.reset();
   }
 
 
@@ -53,6 +57,7 @@ export class ClerkService {
     this.journeyStatus.init();
     this.playerStatus.init();
     this.shipStatus.init();
+    this.weatherStatus.init();
     this.tasks.init();
 
     this.tick.init();
@@ -68,9 +73,10 @@ export class ClerkService {
     protected journeyStatus: JourneyStatusService,
     protected playerStatus: PlayerStatusService,
     protected shipStatus: ShipStatusService,
+    protected weatherStatus: WeatherStatusService,
     protected storage: StorageService,
     protected tasks: TasksService,
-    protected tick: TickService
+    protected tick: TickService,
   ) { }
 
 }
