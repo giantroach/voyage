@@ -30,7 +30,7 @@ export class WeatherStatusService {
 
 
   public reset(): void {
-    this.storage.reset('ship');
+    this.storage.reset('weather');
     this.init();
   }
 
