@@ -39,6 +39,7 @@ export class WeatherStatusService {
     if (this.weather.transition.length > this.minTransition) { return; }
     while(this.weather.transition.length < this.maxTransition) {
       this.karma.turn(this.weather.karma);
+      test[this.weather.karma.index] += 1;
       this.weather.transition.push(this.weather.karma.index);
     }
   }
@@ -67,11 +68,13 @@ export class WeatherStatusService {
   public load(): void {
     const stored = this.storage.get<StoredWeather>('weather') || {
       karma: {
-        chances: [70, 20, 20],
+        chances: [
+          [[0, 50], [1, 10], [2,  1]], // sunny
+          [[0, 10], [1, 20], [2,  5]], // cloudy
+          [[0,  1], [1,  5], [2, 10]]  // rainy
+        ],
         index: 0,
         karma: [0, 0, 0],
-        threshold: 0,
-        type: 't'
       },
       transition: [],
       throttle: this.defaultThrottle
