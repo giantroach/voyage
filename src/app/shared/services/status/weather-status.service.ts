@@ -39,7 +39,6 @@ export class WeatherStatusService {
     if (this.weather.transition.length > this.minTransition) { return; }
     while(this.weather.transition.length < this.maxTransition) {
       this.karma.turn(this.weather.karma);
-      test[this.weather.karma.index] += 1;
       this.weather.transition.push(this.weather.karma.index);
     }
   }
