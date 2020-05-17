@@ -3,6 +3,7 @@ import { StorageService } from '../storage/storage.service';
 import { FacilitiesService } from '../facilities/facilities.service';
 
 import { Ship, StoredShip, ShipFacility } from 'app/types/ship';
+import { FacilityDetailDef, Modifier } from 'app/types/facilities';
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +62,29 @@ export class ShipStatusService {
 
   public getFacilities(): ShipFacility[] {
     return JSON.parse(JSON.stringify(this.ship.facilities));
+  }
+
+
+  // get all the facility details
+  public getFacilityDetails(): FacilityDetailDef[] {
+    return this.getFacilities().map((f) => {
+      return this.facilitiesService.getFacilityDetailDef(f.category, f.id);
+    });
+  }
+
+
+  // get all the facility modifiers matching the given param
+  public getFacilityModifiers(modifierParam: string): Modifier[] {
+    const mds = [];
+    this.getFacilities().forEach((f) => {
+      const fd = this.facilitiesService.getFacilityDetailDef(f.category, f.id);
+      fd.effects.forEach((e) => {
+        if (e.modifier.param === modifierParam) {
+          mds.push(e.modifier);
+        }
+      });
+    });
+    return mds;
   }
 
 

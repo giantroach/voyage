@@ -18,7 +18,7 @@ export class WeatherStatusService {
     'Sunny',
     'Cloudy',
     'Rainy'
-  ]
+  ];
 
 
   public getDispStatus(): DispWeather {
@@ -26,6 +26,11 @@ export class WeatherStatusService {
     return {
       now: this.dispWeatherName[idx]
     };
+  }
+
+
+  public is(idx: number) {
+    return this.weather.transition[0] === idx;
   }
 
 
@@ -37,7 +42,7 @@ export class WeatherStatusService {
 
   public generateTransition(): void  {
     if (this.weather.transition.length > this.minTransition) { return; }
-    while(this.weather.transition.length < this.maxTransition) {
+    while (this.weather.transition.length < this.maxTransition) {
       this.karma.turn(this.weather.karma);
       this.weather.transition.push(this.weather.karma.index);
     }
@@ -85,7 +90,7 @@ export class WeatherStatusService {
 
   public init() {
     this.load();
-    this.generateTransition()
+    this.generateTransition();
   }
 
 

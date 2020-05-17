@@ -8,16 +8,38 @@ const FacilityDef: FacilityDef = {
     details: [
       {
         id: 'ST1',
-        name: 'Storage - Water tank',
+        name: 'Storage - Open water tank',
+        description: '',
         icon: 'database',
         weight: 10,
         size: [2, 2],
         effects: [
           {
             modifier: {
+              param: 'waterMax',
+              value: 20,
+            }
+          },
+          {
+            modifier: {
               param: 'water',
-              operator: 'plus',
-              value: 50,
+              when: {
+                status: 'weather',
+                method: 'is',
+                params: [2]
+              },
+              value: 3,
+            }
+          },
+          {
+            modifier: {
+              param: 'water',
+              when: {
+                status: 'weather',
+                method: 'is',
+                params: [0]
+              },
+              value: -0.1,
             }
           }
         ]
@@ -33,6 +55,7 @@ const FacilityDef: FacilityDef = {
       {
         id: 'SP1',
         name: 'Speed - Mast',
+        description: '',
         icon: 'tachometerAlt',
         weight: 10,
         size: [1, 3],
@@ -40,7 +63,6 @@ const FacilityDef: FacilityDef = {
           {
             modifier: {
               param: 'engine',
-              operator: 'plus',
               value: 1,
             }
           }

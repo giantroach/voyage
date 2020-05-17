@@ -22,6 +22,7 @@ interface FacilityCategoryDef {
 interface FacilityDetailDef {
   id: string;
   name: string;
+  description: string;
   icon: string;
   weight: number;
   size: number[];
@@ -37,8 +38,16 @@ interface Effect {
 
 interface Modifier {
   param: string;
-  operator: string; // plus / multiply
+  operator?: string; // plus (default) / multiply
   value: number;
+  when?: EffectCondition;
+}
+
+
+interface EffectCondition {
+  status: string; // e.g. weather player etc.
+  method: string; // isRaining
+  params?: any[];
 }
 
 
@@ -53,6 +62,7 @@ export {
   FacilityCategoryDef,
   FacilityDetailDef,
   Effect,
+  EffectCondition,
   Modifier,
   Special
 }

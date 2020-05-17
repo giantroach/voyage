@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from '../storage/storage.service';
 import { JourneyStatusService } from './journey-status.service';
+import { ShipStatusService } from './ship-status.service';
+import { WeatherStatusService } from './weather-status.service';
 import * as moment from 'moment';
 
 import { Player, StoredPlayer, DispPlayer } from 'app/types/player';
+import { EffectCondition } from 'app/types/facilities';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +38,13 @@ export class PlayerStatusService {
 
 
   private getMaxWater(): number {
-    return Math.ceil((Math.log(this.level) + 1) * 100);
+    let max = Math.ceil((Math.log(this.level) + 1) * 100);
+    const mds = this.shipStatus.getFacilityModifiers('waterMax');
+    mds.forEach((md) => {
+      if (md.when && !this.isEffectConditionMatched(md.when)) { return; }
+      max += md.value;
+    });
+    return max;
   }
 
 
@@ -73,7 +82,25 @@ export class PlayerStatusService {
   }
 
 
-  public drink(): void {
+  public water(water: number): void {
+    const max = this.getMaxWater() * 1.5;
+    this.player.water += water;
+    if (this.player.water > max) {
+      this.player.water = max;
+    }
+  }
+
+
+  public adjustWater(): void {
+    // Adjust from facilities
+    // TODO: This should be cached and make it faster
+    const mds = this.shipStatus.getFacilityModifiers('water');
+    mds.forEach((md) => {
+      if (md.when && !this.isEffectConditionMatched(md.when)) { return; }
+      this.water(md.value);
+    });
+
+    // Adjust from player drinking
     if (this.player.water > 0) {
       this.player.water -= 0.1;
     }  else {
@@ -82,12 +109,13 @@ export class PlayerStatusService {
   }
 
 
-  public water(water: number): void {
-    const max = this.getMaxWater() * 1.5;
-    this.player.water += water;
-    if (this.player.water > max) {
-      this.player.water = max;
+  public isEffectConditionMatched(c: EffectCondition): boolean {
+    switch (c.status) {
+      case 'weather':
+        return this.weatherStatus[c.method].apply(
+          this.weatherStatus, c.params || null);
     }
+    return false;
   }
 
 
@@ -111,7 +139,7 @@ export class PlayerStatusService {
   public tack(m: moment.Moment) {
     this.level = this.getLevel();
     this.eat();
-    this.drink();
+    this.adjustWater();
   }
 
 
@@ -151,7 +179,9 @@ export class PlayerStatusService {
 
   constructor(
     protected storage: StorageService,
-    protected journeyStatus: JourneyStatusService
+    protected journeyStatus: JourneyStatusService,
+    protected shipStatus: ShipStatusService,
+    protected weatherStatus: WeatherStatusService,
   ) { }
 
 }
