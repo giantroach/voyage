@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherStatusService } from 'app/shared/services/';
 
 @Component({
   selector: 'vy-visual',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VisualComponent implements OnInit {
 
-  constructor() { }
+  public weather = 0;
+
+
+  constructor(
+    protected weatherStatusService: WeatherStatusService
+  ) { }
 
   ngOnInit(): void {
+    this.weatherStatusService.changeWeather.subscribe((w) => {
+      this.weather = w;
+    });
   }
 
 }

@@ -1,4 +1,8 @@
+<div class="rain" *ngIf="weather === 2"></div>
 <div class="wave1"></div>
 <div class="wave2"></div>
 <div class="boat"></div>
-<div class="day-sunny"></div>
+<div [ngClass]="{ 'day-sunny': weather === 0,
+                'day-cloudy': weather === 1,
+                'day-rainy': weather === 2 }">
+</div>

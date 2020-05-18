@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { KarmaService } from '../karma/karma.service';
 import { StorageService } from '../storage/storage.service';
 import { DispWeather, StoredWeather, Weather } from 'app/types/weather';
@@ -8,6 +8,9 @@ import * as moment from 'moment';
   providedIn: 'root'
 })
 export class WeatherStatusService {
+
+
+  @Output() changeWeather = new EventEmitter<number>();
 
 
   private weather: Weather;
@@ -55,7 +58,11 @@ export class WeatherStatusService {
       return;
     }
     this.weather.throttle = this.defaultThrottle;
-    this.weather.transition.shift();
+
+    const prev = this.weather.transition.shift();
+    if (prev !== this.weather.transition[0]) {
+      this.changeWeather.emit(this.weather.transition[0]);
+    }
     this.generateTransition();
   }
 
