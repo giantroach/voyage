@@ -48,6 +48,17 @@ export class PlayerStatusService {
   }
 
 
+  private getMaxDebris(): number {
+    let max = 100;
+    const mds = this.shipStatus.getFacilityModifiers('debrisMax');
+    mds.forEach((md) => {
+      if (md.when && !this.isEffectConditionMatched(md.when)) { return; }
+      max += md.value;
+    });
+    return max;
+  }
+
+
   public getEfficiency(): number {
     // TODO: consider health, food and water
     return Math.log(this.level) + 1;
@@ -60,6 +71,7 @@ export class PlayerStatusService {
       healthPer: Number((this.player.health / (this.getMaxHealth())).toFixed(2)),
       foodPer: Number((this.player.food / (this.getMaxFood())).toFixed(2)),
       waterPer: Number((this.player.water / (this.getMaxWater())).toFixed(2)),
+      debris: `${this.player.debris} / ${this.getMaxDebris()}`,
     };
   }
 
@@ -136,6 +148,15 @@ export class PlayerStatusService {
   }
 
 
+  public useDebris(cost: number): boolean {
+    if (this.player.debris < cost) {
+      return false;
+    }
+    this.player.debris -= cost;
+    return true;
+  }
+
+
   public tack(m: moment.Moment) {
     this.level = this.getLevel();
     this.eat();
@@ -154,6 +175,7 @@ export class PlayerStatusService {
       health: this.player.health,
       food: this.player.food,
       water: this.player.water,
+      debris: this.player.debris,
     });
   }
 
@@ -163,6 +185,7 @@ export class PlayerStatusService {
       health: 100,
       food: 100,
       water: 100,
+      debris: 50,
     };
 
     this.level = this.getLevel();

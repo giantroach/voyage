@@ -19,10 +19,35 @@ export class LogService {
   }
 
 
-  public add(log: Log) {
+  public add(log: Log): void {
     this.log.unshift(log);
     this.save();
     this.notification.emit(this.log);
+  }
+
+
+  public addNoDup(log: Log): void {
+    const lastLog = this.log[0];
+    if (lastLog &&
+      lastLog.title === log.title &&
+      lastLog.text === log.text &&
+      lastLog.type === log.type) {
+
+      this.log[0].time = log.time;
+      this.save();
+      this.notification.emit(this.log);
+      return;
+    }
+
+    this.log.unshift(log);
+    this.save();
+    this.notification.emit(this.log);
+  }
+
+
+  public reset(): void {
+    this.storage.reset('log');
+    this.init();
   }
 
 

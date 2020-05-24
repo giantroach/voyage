@@ -2,6 +2,7 @@ interface StoredPlayer {
   health: number;
   food: number;
   water: number;
+  debris: number;
 }
 
 
@@ -10,6 +11,7 @@ interface Player {
   health: number;
   food: number;
   water: number;
+  debris: number;
 }
 
 
@@ -18,6 +20,7 @@ interface DispPlayer {
   healthPer: number;
   foodPer: number;
   waterPer: number;
+  debris: string;
 }
 
 

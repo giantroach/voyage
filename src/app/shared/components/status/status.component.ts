@@ -23,6 +23,7 @@ export class StatusComponent implements OnInit {
   private healthPer: number;
   private foodPer: number;
   private waterPer: number;
+  private debris: string;
 
 
   // progress and environments
@@ -42,6 +43,7 @@ export class StatusComponent implements OnInit {
     this.healthPer = this.toFixed(dispPlayer.healthPer * 100);
     this.foodPer = this.toFixed(dispPlayer.foodPer * 100);
     this.waterPer = this.toFixed(dispPlayer.waterPer * 100);
+    this.debris = dispPlayer.debris;
 
     // journey: journeyStatusService
     this.day = dispJourney.days;
@@ -74,6 +76,9 @@ export class StatusComponent implements OnInit {
 
       case 'weather':
         return this.weather;
+
+      case 'debris':
+        return this.debris;
     }
   }
 

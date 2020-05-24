@@ -48,36 +48,24 @@ export class TasksService {
 
 
   public add(category: string, t: TaskDetailDef): void {
-    if (this.getActiveTask()) {
-      this.queuedTasks.push({
-        id: t.id,
-        category,
-        uid: this.genUID(),
-        name: t.name,
-        icon: t.icon || '',
-        cost: t.cost || 0,
-        effort: t.effort || 0,
-        params: t.params || null,
-        args: t.args || null
-      });
-      this.save();
-      return;
-    }
-
-    this.activeTask = {
+    this.queuedTasks.push({
       id: t.id,
       category,
       uid: this.genUID(),
       name: t.name,
       icon: t.icon || '',
       cost: t.cost || 0,
-      params: t.params || null,
-      args: t.args || null,
       effort: t.effort || 0,
-      since: Number(new Date()),
-      completed: 0
-    };
+      params: t.params || null,
+      args: t.args || null
+    });
     this.save();
+
+    if (!this.getActiveTask()) {
+      this.shift(moment());
+    }
+
+    return;
   }
 
 
@@ -101,16 +89,30 @@ export class TasksService {
   }
 
 
-  public shift() {
+  public shift(m: moment.Moment): boolean {
     if (!this.queuedTasks.length) {
       this.activeTask = null;
-      return;
+      return true;
+    }
+
+    const nextTask = this.queuedTasks[0];
+    if (!this.playerStatus.useDebris(nextTask.cost)) {
+      // Log output
+      this.log.addNoDup({
+        title: 'Task failed: ' + nextTask.name,
+        text: 'Task: ' + nextTask.name + ' cloudln\'t be started: Lack of debris.',
+        time: Number(m),
+        type: 'error'
+      });
+      this.queuedTasks.shift();
+      return false;
     }
 
     this.activeTask = Object.assign(
-      { since: Number(new Date()), completed: 0 },
+      { since: Number(m), completed: 0 },
       this.queuedTasks.shift()
     );
+    return true;
   }
 
 
@@ -135,7 +137,7 @@ export class TasksService {
       if (!this.queuedTasks.length) {
         return;
       }
-      this.shift();
+      if (!this.shift(m)) { return; }
     }
 
     const efficiency = this.playerStatus.getEfficiency();
@@ -157,7 +159,8 @@ export class TasksService {
       subCategory: this.activeTask.category,
       args: this.activeTask.args
     });
-    this.shift();
+
+    this.shift(m);
   }
 
 
