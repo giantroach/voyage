@@ -32,6 +32,11 @@ export class WeatherStatusService {
   }
 
 
+  public getNow(): number {
+    return this.weather.transition[0];
+  }
+
+
   public is(idx: number) {
     return this.weather.transition[0] === idx;
   }

@@ -42,6 +42,7 @@ export class ClerkService {
   public restart(): void {
     this.tasks.reset();
     this.tick.reset();
+    this.log.reset();
     this.journeyStatus.reset();
     this.playerStatus.reset();
     this.shipStatus.reset();

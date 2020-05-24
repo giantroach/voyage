@@ -15,7 +15,9 @@ export class VisualComponent implements OnInit {
     protected weatherStatusService: WeatherStatusService
   ) { }
 
+
   ngOnInit(): void {
+    this.weather = this.weatherStatusService.getNow();
     this.weatherStatusService.changeWeather.subscribe((w) => {
       this.weather = w;
     });
