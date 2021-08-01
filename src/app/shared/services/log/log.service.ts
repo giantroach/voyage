@@ -58,7 +58,7 @@ export class LogService {
 
   public init(): void {
     const stored = this.storage.get<Log[]>('log');
-    this.log = stored;
+    this.log = stored || [];
   }
 
 
