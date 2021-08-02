@@ -2,13 +2,14 @@ import { TaskDef } from 'app/types/tasks';
 
 const TypeDef: TaskDef = {
   build: {
-    id: 'B0',
+    id: 'BLD',
     name: 'Build',
     icon: 'cog',
     visible: false,
     subTasks: [
       {
-        id: 'ST1',
+        id: 'BLD_STR1',
+        command: 'BLD_STR1',
         name: 'Build - Water tank',
         icon: 'database',
         cost: 100,
@@ -16,7 +17,8 @@ const TypeDef: TaskDef = {
         args: ['storage', 'ST1']
       },
       {
-        id: 'SP1',
+        id: 'BLD_SPC1',
+        command: 'BLD_SPC1',
         name: 'Build - Mast',
         icon: 'tachometerAlt',
         cost: 100,
@@ -26,13 +28,14 @@ const TypeDef: TaskDef = {
     ]
   },
   expand: {
-    id: 'E0',
+    id: 'EXP',
     name: 'Expand',
     icon: 'arrowsAlt',
     visible: false,
     subTasks: [
       {
-        id: 'E1',
+        id: 'EXP_Y',
+        command: 'EXP_Y',
         name: 'Expand - Vertical',
         icon: 'arrowsAltV',
         cost: null,
@@ -40,7 +43,8 @@ const TypeDef: TaskDef = {
         params: { direction: 'Y' }
       },
       {
-        id: 'E2',
+        id: 'EXP_X',
+        command: 'EXP_X',
         name: 'Expand - Horizontal',
         icon: 'arrowsAltH',
         cost: null,
@@ -50,13 +54,14 @@ const TypeDef: TaskDef = {
     ]
   },
   fishing: {
-    id: 'F0',
+    id: 'FSH',
     name: 'Fishing',
     icon: 'fish',
     visible: true,
     subTasks: [
       {
-        id: 'F1',
+        id: 'FSH1',
+        command: 'FSH1',
         name: 'Fishing - Short',
         icon: 'fish',
         cost: 0,
@@ -64,7 +69,8 @@ const TypeDef: TaskDef = {
         args: [5]
       },
       {
-        id: 'F2',
+        id: 'FSH2',
+        command: 'FSH2',
         name: 'Fishing - Long',
         icon: 'fish',
         cost: 0,
@@ -74,13 +80,14 @@ const TypeDef: TaskDef = {
     ]
   },
   rest: {
-    id: 'R0',
+    id: 'RST',
     name: 'Rest',
     icon: 'bed',
     visible: true,
     subTasks: [
       {
-        id: 'R1',
+        id: 'RST1',
+        command: 'RST1',
         name: 'Rest - Short',
         icon: 'bed',
         cost: 0,
@@ -88,7 +95,8 @@ const TypeDef: TaskDef = {
         args: [5]
       },
       {
-        id: 'R2',
+        id: 'RST2',
+        command: 'RST2',
         name: 'Rest - Long',
         icon: 'bed',
         cost: 0,

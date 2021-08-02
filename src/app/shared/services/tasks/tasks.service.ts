@@ -50,7 +50,8 @@ export class TasksService {
   public add(category: string, t: TaskDetailDef): void {
     this.queuedTasks.push({
       id: t.id,
-      category,
+      category: category,
+      command: t.command,
       uid: this.genUID(),
       name: t.name,
       icon: t.icon || '',
@@ -157,6 +158,7 @@ export class TasksService {
     this.event.emit({
       category: 'task',
       subCategory: this.activeTask.category,
+      command: this.activeTask.command,
       args: this.activeTask.args
     });
 

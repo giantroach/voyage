@@ -6,6 +6,7 @@ interface StoredTasks {
 interface Task {
   id: string;
   category: string;
+  command: string; // typically same as id
   uid: string;
   name: string;
   icon?: string;
@@ -36,6 +37,7 @@ interface TaskCategoryDef {
 
 interface TaskDetailDef {
   id: string;
+  command: string; // typically same as id
   name: string;
   icon: string;
   cost: number;

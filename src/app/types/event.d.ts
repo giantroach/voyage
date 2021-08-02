@@ -1,6 +1,7 @@
 interface Event {
   category: string;
   subCategory: string;
+  command: string;
   args?: any[];
 }
 
@@ -11,9 +12,12 @@ interface EventDef {
 
 
 interface TypeDef {
-  [subCategory: string]: IDDef;
+  [subCategory: string]: CommandDef;
 }
 
+interface CommandDef {
+  [command: string]: IDDef;
+}
 
 interface IDDef {
   does: Array<TaskDef>;

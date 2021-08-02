@@ -14,7 +14,7 @@ export class EventResolverService {
 
   public resolve(e: Event) {
     console.log('resolve', e);
-    const target = def[e.category][e.subCategory];
+    const target = def[e.category][e.subCategory][e.command];
 
     target.does.forEach((d) => {
       const args = d.args.concat(e.args);

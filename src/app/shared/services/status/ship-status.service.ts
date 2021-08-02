@@ -94,12 +94,14 @@ export class ShipStatusService {
 
 
   public expandX(): void {
-    this.ship.space[0] += 1;
+    this.ship.space[1] += 1;
+    this.save();
   }
 
 
   public expandY(): void {
-    this.ship.space[1] += 1;
+    this.ship.space[0] += 1;
+    this.save();
   }
 
 
