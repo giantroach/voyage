@@ -56,7 +56,7 @@ export class TickService {
     }
     this.lastTick = moment();
 
-    this.timer = setInterval(() => {
+    this.timer = window.setInterval(() => {
       console.log('tick!');
       const m = moment();
       this.ticks(m);
