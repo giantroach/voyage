@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { JourneyStatusService } from './journey-status.service';
 
-describe('JourneyStatusService', () => {
+xdescribe('JourneyStatusService', () => {
   let service: JourneyStatusService;
 
   beforeEach(() => {

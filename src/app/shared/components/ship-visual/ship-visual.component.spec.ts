@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShipVisualComponent } from './ship-visual.component';
 
-describe('ShipVisualComponent', () => {
+xdescribe('ShipVisualComponent', () => {
   let component: ShipVisualComponent;
   let fixture: ComponentFixture<ShipVisualComponent>;
 
